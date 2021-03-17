@@ -31,7 +31,7 @@ func TestOneLine(t *testing.T) {
 func TestTwoLines(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\n"))
 
-	got := strings.Join(lines, "")
+	got := lines[0]
 	if got != "hello\n" {
 		t.Errorf("Want \"hello\", got %s", got)
 	}
