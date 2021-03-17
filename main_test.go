@@ -29,10 +29,10 @@ func TestOneLine(t *testing.T) {
 }
 
 func TestTwoLines(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\n"))
+	lines := CaptureReader(strings.NewReader("hello\nworld\n"))
 
 	got := len(lines)
-	if got != 1 {
-		t.Errorf("Want 1, got %d", got)
+	if got != 2 {
+		t.Errorf("Want 2, got %d", got)
 	}
 }
