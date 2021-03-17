@@ -35,5 +35,9 @@ func TestTwoLines(t *testing.T) {
 	if got != 2 || lines[0] != "hello\n" {
 		t.Errorf("Want 2, got %d", got)
 	}
+	one := lines[0]
+	if got != 2 || one != "hello\n" {
+		t.Errorf("Want 2, got %d", got)
+	}
 
 }
