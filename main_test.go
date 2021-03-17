@@ -27,3 +27,12 @@ func TestOneLine(t *testing.T) {
 		t.Errorf("Want \"hello\", got %s", got)
 	}
 }
+
+func TestOneLines(t *testing.T) {
+	lines := CaptureReader(strings.NewReader("hello\n"))
+
+	got := strings.Join(lines, "")
+	if got != "hello\n" {
+		t.Errorf("Want \"hello\", got %s", got)
+	}
+}
