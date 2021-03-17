@@ -22,7 +22,7 @@ func (r *TestReader) ReadString(delim byte) (string, error) {
 func TestFoo(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\n"))
 
-	got := strings.Join(lines, "") + ""
+	got := strings.Join(lines, "")
 	if got != "hello\n" {
 		t.Errorf("Want \"hello\", got %s", got)
 	}
