@@ -38,7 +38,6 @@ func Capture(reader MyReader) []string {
 	for {
 		line, err := reader.ReadString('\n')
 		if err == nil {
-			y += 1
 			fmt.Printf("Read %d %d  %s\n", y, x, line)
 			esc := "\x1b"
 			re := regexp.MustCompile(esc + "\\[([0-9]*)([ABCDEFGJK]|;[0-9]*H)")
