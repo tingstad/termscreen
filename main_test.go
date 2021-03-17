@@ -28,7 +28,7 @@ func TestOneLine(t *testing.T) {
 	}
 }
 
-func TestOneLines(t *testing.T) {
+func TestTwoLines(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\n"))
 
 	got := strings.Join(lines, "")
