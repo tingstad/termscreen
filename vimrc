@@ -3,7 +3,10 @@ augroup TestAutoGroup
 augroup END
 function! TestCommitResetGo()
     if exists('g:mybuf') && bufwinnr(g:mybuf) > -1
+        let l:buffer = bufnr('%')
         silent! execute bufwinnr(g:mybuf) . 'windo quit!'
+        execute bufwinnr(l:buffer) . 'wincmd w'
+        unlet l:buffer
     endif
     write
     botright 9 new
