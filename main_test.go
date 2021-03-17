@@ -19,7 +19,7 @@ func (r *TestReader) ReadString(delim byte) (string, error) {
 	return "", io.EOF
 }
 
-func TestFoo(t *testing.T) {
+func TestOneLine(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\n"))
 
 	got := strings.Join(lines, "")
