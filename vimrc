@@ -8,7 +8,7 @@ function! TestCommitResetGo()
     write
     botright 9 new
     let g:mybuf = bufnr('%')
-    execute 'read! go fmt && date && echo ok'
+    execute 'read! go fmt && date && go test && git commit --all --message=TCR || git reset --hard HEAD'
     " goto previous window:
     wincmd p
     edit
