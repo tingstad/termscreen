@@ -37,7 +37,7 @@ func TestTwoLines(t *testing.T) {
 	}
 	one := lines[0]
 	if one != "hello\n" {
-		t.Errorf("Want 2, got %d", got)
+		t.Errorf("Want \"hello\", got %s", one)
 	}
 
 }
