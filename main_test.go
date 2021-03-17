@@ -32,7 +32,7 @@ func TestTwoLines(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\nworld\n"))
 
 	got := len(lines)
-	if got != 2 {
+	if got != 2 || lines[0] != "hello\n" {
 		t.Errorf("Want 2, got %d", got)
 	}
 
