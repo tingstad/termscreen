@@ -39,8 +39,8 @@ func TestTwoLines(t *testing.T) {
 	if one != "hello\n" {
 		t.Errorf("Want \"hello\", got %s", one)
 	}
-	two := lines[0]
-	if two != "hello\n" {
+	two := lines[1]
+	if two != "world\n" {
 		t.Errorf("Want \"hello\", got %s", one)
 	}
 
