@@ -46,18 +46,10 @@ func TestTwoLines(t *testing.T) {
 }
 
 func TestTwoLinesDown(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\nworld\n"))
+	lines := CaptureReader(strings.NewReader("hello\n"))
 
-	got := len(lines)
-	if got != 2 || lines[0] != "hello\n" {
-		t.Errorf("Want 2, got %d", got)
-	}
-	one := lines[0]
-	if one != "hello\n" {
-		t.Errorf("Want \"hello\", got %s", one)
-	}
-	two := lines[1]
-	if two != "world\n" {
-		t.Errorf("Want \"world\", got %s", two)
+	got := strings.Join(lines, "")
+	if got != "hello\n" {
+		t.Errorf("Want \"hello\", got %s", got)
 	}
 }
