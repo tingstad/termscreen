@@ -46,7 +46,8 @@ func TestTwoLines(t *testing.T) {
 }
 
 func TestTwoLinesDown(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\n"))
+	screen := make([]string, 0)
+	lines := Print(screen, "hello\n", 0, 0)
 
 	got := strings.Join(lines, "")
 	if got != "hello\n" {
