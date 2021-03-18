@@ -71,7 +71,7 @@ func Capture(reader MyReader) []string {
 }
 
 func Print(screen []string, text string, x int, y int) []string {
-	if y >= len(screen) {
+	for y >= len(screen) {
 		screen = append(screen, text)
 	}
 	return screen
