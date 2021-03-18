@@ -45,7 +45,7 @@ func TestTwoLines(t *testing.T) {
 	}
 }
 
-func TestTwoLinesDown(t *testing.T) {
+func TestPrint(t *testing.T) {
 	screen := make([]string, 0)
 	lines := Print(screen, "hello\n", 0, 0)
 
