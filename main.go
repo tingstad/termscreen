@@ -34,7 +34,9 @@ type State struct {
 
 func CaptureShim(reader MyReader) []string {
 	_ = Capture(reader)
-	return Capture(reader)
+	lines := Capture(reader)
+
+	return lines
 }
 func Capture(reader MyReader) []string {
 	screen := make([]string, 0)
