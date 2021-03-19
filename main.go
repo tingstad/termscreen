@@ -86,6 +86,8 @@ func Print(screen []string, text string, x int, y int) []string {
 	if y == len(screen) {
 		screen = append(screen, text)
 	}
+	if y < len(screen) {
+	}
 	return screen
 }
 
