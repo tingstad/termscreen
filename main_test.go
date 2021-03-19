@@ -61,6 +61,7 @@ func TestPrint(t *testing.T) {
 		t.Errorf("Want \"hello\", got %s", got)
 	}
 }
+
 func TestPrintDown(t *testing.T) {
 	screen := make([]string, 0)
 	lines := Print(screen, "hello", 0, 2)
