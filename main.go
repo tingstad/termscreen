@@ -33,6 +33,7 @@ type State struct {
 }
 
 func CaptureShim(reader MyReader) []string {
+	_ = Capture(reader)
 	return Capture(reader)
 }
 func Capture(reader MyReader) []string {
