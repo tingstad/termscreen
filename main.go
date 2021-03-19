@@ -80,7 +80,6 @@ func Print(screen []string, text string, x int, y int) []string {
 	return screen
 }
 
-/*
 func Print2(screen []string, text string, x int, y int) []string {
 	if text[len(text)-1:] != "\n" {
 		text = text + "\n"
@@ -90,8 +89,6 @@ func Print2(screen []string, text string, x int, y int) []string {
 	}
 	return screen
 }
-
-*/
 
 func Use(vals ...interface{}) {
 	for _, val := range vals {
