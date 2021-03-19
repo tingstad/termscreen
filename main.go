@@ -65,6 +65,11 @@ func Capture(reader MyReader) []string {
 			_ = Print2(screen, line, x, y)
 			screen = Print(screen, line, x, y)
 			y += 1
+			for _, line := range screen {
+				if line[len(line)-1:] != "\n" {
+					line = line + "\n"
+				}
+			}
 		} else {
 			if err != io.EOF {
 				fmt.Printf("Rrrot %s", err)
