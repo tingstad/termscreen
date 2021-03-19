@@ -58,8 +58,8 @@ func Capture(reader MyReader) []string {
 				}
 				fmt.Printf("index2 %d %d\n", indicies[0], indicies[1])
 			}
-			screen = Print(screen, line, x, y)
 			_ = Print2(screen, line, x, y)
+			screen = Print(screen, line, x, y)
 			y += 1
 		} else {
 			if err != io.EOF {
