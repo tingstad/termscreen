@@ -81,7 +81,7 @@ func Print(screen []string, text string, x int, y int) []string {
 }
 
 /*
-func Print(screen []string, text string, x int, y int) []string {
+func Print2(screen []string, text string, x int, y int) []string {
 	if text[len(text)-1:] != "\n" {
 		text = text + "\n"
 	}
