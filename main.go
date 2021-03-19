@@ -32,6 +32,9 @@ type State struct {
 	screen [][]string
 }
 
+func CaptureShim(reader MyReader) []string {
+	return Capture(reader)
+}
 func Capture(reader MyReader) []string {
 	screen := make([]string, 0)
 	x, y := 0, 0
