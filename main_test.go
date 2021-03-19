@@ -74,7 +74,7 @@ func TestPrintDown(t *testing.T) {
 
 func TestPrintOver(t *testing.T) {
 	screen := []string{"hello"}
-	lines := Print(screen, "hello", 0, 0)
+	lines := Print(screen, "world", 0, 0)
 
 	got := strings.Join(lines, "")
 	if got != "hello" {
