@@ -54,7 +54,7 @@ func TestTwoLines(t *testing.T) {
 
 func TestPrint(t *testing.T) {
 	screen := make([]string, 0)
-	lines := Print(screen, "hello\n", 0, 0)
+	lines := Print(screen, "hello", 0, 0)
 
 	got := strings.Join(lines, "")
 	if got[len(got)-1:] == "\n" {
