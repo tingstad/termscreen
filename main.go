@@ -62,7 +62,7 @@ func Capture(reader MyReader) []string {
 				}
 				fmt.Printf("index2 %d %d\n", indicies[0], indicies[1])
 			}
-			screen = Print2(screen, line, x, y)
+			screen = Print(screen, line, x, y)
 			y += 1
 			for _, line := range screen {
 				if line[len(line)-1:] != "\n" {
