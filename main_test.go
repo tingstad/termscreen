@@ -57,10 +57,10 @@ func TestPrint(t *testing.T) {
 	lines := Print(screen, "hello\n", 0, 0)
 
 	got := strings.Join(lines, "")
-	if got[len(got)-1:] != "\n" {
-		got = got + "\n"
+	if got[len(got)-1:] == "\n" {
+		got = got[:len(got)-1]
 	}
-	if got != "hello\n" {
+	if got != "hello" {
 		t.Errorf("Want \"hello\", got %s", got)
 	}
 }
