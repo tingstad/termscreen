@@ -71,3 +71,12 @@ func TestPrintDown(t *testing.T) {
 		t.Errorf("Want \",,hello\", got %s", got)
 	}
 }
+func TestPrintOver(t *testing.T) {
+	screen := make([]string, 0)
+	lines := Print(screen, "hello", 0, 0)
+
+	got := strings.Join(lines, "")
+	if got != "hello" {
+		t.Errorf("Want \"hello\", got %s", got)
+	}
+}
