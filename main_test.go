@@ -63,10 +63,10 @@ func TestPrint(t *testing.T) {
 }
 func TestPrintDown(t *testing.T) {
 	screen := make([]string, 0)
-	lines := Print(screen, "hello", 0, 0)
+	lines := Print(screen, "hello", 0, 1)
 
-	got := strings.Join(lines, "")
-	if got != "hello" {
-		t.Errorf("Want \"hello\", got %s", got)
+	got := strings.Join(lines, ",")
+	if got != ",hello" {
+		t.Errorf("Want \",hello\", got %s", got)
 	}
 }
