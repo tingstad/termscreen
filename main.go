@@ -39,13 +39,13 @@ func CaptureShim(reader MyReader) []string {
 }
 func Capture(reader MyReader) []string {
 	screen := make([]string, 0)
+	esc := "\x1b"
+	re := regexp.MustCompile(esc + "\\[([0-9]*)([ABCDEFGJK]|;[0-9]*H)")
 	x, y := 0, 0
 	for {
 		line, err := reader.ReadString('\n')
 		if err == nil {
 			fmt.Printf("Read %d %d  %s\n", y, x, line)
-			esc := "\x1b"
-			re := regexp.MustCompile(esc + "\\[([0-9]*)([ABCDEFGJK]|;[0-9]*H)")
 			indicies := re.FindStringSubmatchIndex(line)
 			if indicies != nil && len(indicies) > 4 {
 				fmt.Printf("indices %d\n", indicies)
