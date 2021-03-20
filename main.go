@@ -90,7 +90,9 @@ func Print(screen []string, text string, x int, y int) []string {
 		if x == 0 && len(screen[y]) <= len(text) {
 			screen[y] = text
 		} else {
-			screen[y] = screen[y][0:x] + text
+			if x > 0 {
+				screen[y] = screen[y][0:x] + text
+			}
 		}
 	}
 	return screen
