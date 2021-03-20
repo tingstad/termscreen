@@ -63,6 +63,8 @@ func Capture(reader MyReader) []string {
 					switch code {
 					case "A": // Up
 						fmt.Printf("AAAA " + count)
+					case "B": // Down
+						y += 1
 					default:
 						fmt.Printf("substr %s %s", code, count)
 					}
