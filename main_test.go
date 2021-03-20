@@ -107,10 +107,10 @@ func TestDown(t *testing.T) {
 }
 
 func TestUp(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\x1b[Bhi\n"))
+	lines := CaptureReader(strings.NewReader("hello\x1b[Aansi\n"))
 
-	got := strings.Join(lines, ",")
-	if got != "hello,hi" {
+	got := strings.Join(lines, "")
+	if got != "ansio" {
 		t.Errorf("Want \"hello,hi\", got \"%s\"", got)
 	}
 }
