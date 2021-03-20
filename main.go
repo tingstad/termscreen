@@ -87,7 +87,7 @@ func Capture(reader MyReader) []string {
 }
 
 func Print(screen []string, text string, x int, y int) []string {
-	fmt.Printf("DEBUG Printf %d %d %s", x, y, text)
+	fmt.Printf("DEBUG Printf %d %d %s\n", x, y, text)
 	for y > len(screen) {
 		screen = append(screen, "")
 	}
