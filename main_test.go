@@ -102,7 +102,7 @@ func TestDown(t *testing.T) {
 
 	got := strings.Join(lines, ",")
 	if got != "hello,     hi" {
-		t.Errorf("Want \"hello,hi\", got \"%s\"", got)
+		t.Errorf("Want \"hello,     hi\", got \"%s\"", got)
 	}
 }
 
