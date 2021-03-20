@@ -97,6 +97,7 @@ func TestPrintOverPartly(t *testing.T) {
 	}
 }
 
+/*
 func TestDown(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\x1b[Bhi\n"))
 
@@ -104,7 +105,7 @@ func TestDown(t *testing.T) {
 	if got != "hello,hi" {
 		t.Errorf("Want \"hello,hi\", got \"%s\"", got)
 	}
-}
+}*/
 
 func TestUp(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\x1b[Aansi\n"))
