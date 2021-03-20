@@ -56,7 +56,7 @@ func Capture(reader MyReader) []string {
 					countStart := indices[2]
 					countEnd := indices[3]
 					start := indices[4]
-					code := string(line[start : start+1])
+					code := line[start : start+1]
 					count := string(line[countStart:countEnd])
 					switch code {
 					case "A": // Up
