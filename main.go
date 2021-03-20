@@ -6,9 +6,11 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"strings"
 )
 
 func main() {
+	_ = strings.Repeat("a", 0)
 	fmt.Printf("Started")
 	lines := CaptureReader(os.Stdin)
 	fmt.Printf("\n\n")
