@@ -24,7 +24,7 @@ func TestOneLine(t *testing.T) {
 
 	got := strings.Join(lines, "")
 	if got != "hello\n" {
-		t.Errorf("Want \"hello\", got %s", got)
+		t.Errorf("Want \"hello\", got \"%s\"", got)
 	}
 }
 
