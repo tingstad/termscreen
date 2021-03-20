@@ -73,11 +73,11 @@ func TestPrintDown(t *testing.T) {
 }
 
 func TestPrintOver(t *testing.T) {
-	screen := []string{"hello"}
+	screen := []string{"world"}
 	lines := Print(screen, "world", 0, 0)
 
 	got := strings.Join(lines, "")
-	if got != "hello" {
-		t.Errorf("Want \"hello\", got %s", got)
+	if got != "world" {
+		t.Errorf("Want \"world\", got %s", got)
 	}
 }
