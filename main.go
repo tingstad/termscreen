@@ -59,7 +59,7 @@ func Capture(reader MyReader) []string {
 					count := string(line[countStart:countEnd])
 					switch code {
 					case "A": // Up
-						fmt.Printf("AAAA " + count)
+						y -= 1
 					case "B": // Down
 						y += 1
 					default:
