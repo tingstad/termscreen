@@ -27,7 +27,7 @@ func CaptureReader(reader io.Reader) []string {
 	var myReader MyReader = bufioReader
 	lines := Capture(myReader)
 	for i, line := range lines {
-		if line[len(line)-1:] != "\n" {
+		if len(line) > 0 && line[len(line)-1:] != "\n" {
 			lines[i] = line + "\n"
 		}
 	}
