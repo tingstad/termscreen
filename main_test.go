@@ -90,4 +90,5 @@ func TestPrintOverPartly(t *testing.T) {
 	if got != "hellworld" {
 		t.Errorf("Want \"hellworld\", got %s", got)
 	}
+	_ = ""
 }
