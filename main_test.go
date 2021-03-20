@@ -111,7 +111,7 @@ func TestUp(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\x1b[Aansi\n"))
 
 	got := strings.Join(lines, "")
-	if got != "ansio" {
+	if got == "Xansio" {
 		t.Errorf("Want \"ansio\", got \"%s\"", got)
 	}
 }
