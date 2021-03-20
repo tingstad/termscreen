@@ -91,9 +91,6 @@ func Print(screen []string, text string, x int, y int) []string {
 	for y >= len(screen) {
 		screen = append(screen, "")
 	}
-	if y == len(screen) {
-		screen = append(screen, text)
-	}
 	if y < len(screen) {
 		suffix := ""
 		if len(screen[y]) > x+len(text) {
