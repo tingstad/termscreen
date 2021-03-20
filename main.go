@@ -47,12 +47,12 @@ func Capture(reader MyReader) []string {
 		if err == nil {
 			fmt.Printf("Read %d %d  %s\n", y, x, line)
 			for {
-				indicies := re.FindStringSubmatchIndex(line)
-				if indicies != nil && len(indicies) > 4 {
-					fmt.Printf("indices %d\n", indicies)
-					countStart := indicies[2]
-					countEnd := indicies[3]
-					start := indicies[4]
+				indices := re.FindStringSubmatchIndex(line)
+				if indices != nil && len(indices) > 4 {
+					fmt.Printf("indices %d\n", indices)
+					countStart := indices[2]
+					countEnd := indices[3]
+					start := indices[4]
 					code := string(line[start : start+1])
 					count := string(line[countStart:countEnd])
 					switch code {
@@ -61,7 +61,7 @@ func Capture(reader MyReader) []string {
 					default:
 						fmt.Printf("substr %s %s", code, count)
 					}
-					fmt.Printf("index2 %d %d\n", indicies[0], indicies[1])
+					fmt.Printf("index2 %d %d\n", indices[0], indices[1])
 				}
 				screen = Print(screen, line, x, y)
 				break
