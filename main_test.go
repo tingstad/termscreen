@@ -43,9 +43,6 @@ func TestTwoLines(t *testing.T) {
 	if two != "world" {
 		t.Errorf("Want \"world\", got %s", two)
 	}
-	if strings.ReplaceAll(strings.Join(lines, " "), "\n", "") != "hello world" {
-		t.Errorf("Want \"hello world\", got other")
-	}
 	all := strings.Join(lines, ", ")
 	if all != "hello, world" {
 		t.Errorf("Want \"hello, world\", got %s", all)
