@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-	_ = strings.Repeat("a", 0)
 	fmt.Printf("Started")
 	lines := CaptureReader(os.Stdin)
 	fmt.Printf("\n\n")
@@ -98,6 +97,7 @@ func Print(screen []string, text string, x int, y int) []string {
 			if x < len(screen[y]) {
 				prefix = screen[y][0:x]
 			} else {
+				_ = strings.Repeat("a", 0)
 				prefix = screen[y]
 			}
 		}
