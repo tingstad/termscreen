@@ -31,6 +31,7 @@ func CaptureReader(reader io.Reader) []string {
 			lines[i] = line + "\n"
 		}
 	}
+	lines = CaptureReaderNew(reader)
 	return lines
 }
 func CaptureReaderNew(reader io.Reader) []string {
