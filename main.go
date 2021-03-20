@@ -46,27 +46,27 @@ func Capture(reader MyReader) []string {
 		line, err := reader.ReadString('\n')
 		if err == nil {
 			fmt.Printf("Read %d %d  %s\n", y, x, line)
-			indicies := re.FindStringSubmatchIndex(line)
 			for {
+				indicies := re.FindStringSubmatchIndex(line)
+				if indicies != nil && len(indicies) > 4 {
+					fmt.Printf("indices %d\n", indicies)
+					countStart := indicies[2]
+					countEnd := indicies[3]
+					start := indicies[4]
+					runes := []rune(line)
+					code := string(runes[start : start+1])
+					count := string(runes[countStart:countEnd])
+					switch code {
+					case "A":
+						fmt.Printf("AAAA " + count)
+					default:
+						fmt.Printf("substr %s %s", code, count)
+					}
+					fmt.Printf("index2 %d %d\n", indicies[0], indicies[1])
+				}
+				screen = Print(screen, line, x, y)
 				break
 			}
-			if indicies != nil && len(indicies) > 4 {
-				fmt.Printf("indices %d\n", indicies)
-				countStart := indicies[2]
-				countEnd := indicies[3]
-				start := indicies[4]
-				runes := []rune(line)
-				code := string(runes[start : start+1])
-				count := string(runes[countStart:countEnd])
-				switch code {
-				case "A":
-					fmt.Printf("AAAA " + count)
-				default:
-					fmt.Printf("substr %s %s", code, count)
-				}
-				fmt.Printf("index2 %d %d\n", indicies[0], indicies[1])
-			}
-			screen = Print(screen, line, x, y)
 			y += 1
 		} else {
 			if err != io.EOF {
