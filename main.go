@@ -23,15 +23,6 @@ type MyReader interface {
 }
 
 func CaptureReader(reader io.Reader) []string {
-	var bufioReader *bufio.Reader = bufio.NewReader(reader)
-	var myReader MyReader = bufioReader
-	lines := Capture(myReader)
-	for i, line := range lines {
-		if len(line) > 0 && line[len(line)-1:] != "\n" {
-			lines[i] = line + "\n"
-		}
-	}
-	lines = CaptureReaderNew(reader)
 	return CaptureReaderNew(reader)
 }
 func CaptureReaderNew(reader io.Reader) []string {
