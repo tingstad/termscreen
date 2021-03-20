@@ -69,8 +69,9 @@ func Capture(reader MyReader) []string {
 						fmt.Printf("substr %s %s", code, count)
 					}
 					fmt.Printf("index2 %d %d\n", indices[0], indices[1])
+				} else {
+					break
 				}
-				break
 			}
 			y += 1
 		} else {
