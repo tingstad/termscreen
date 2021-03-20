@@ -47,6 +47,9 @@ func Capture(reader MyReader) []string {
 	x, y := 0, 0
 	for {
 		line, err := reader.ReadString('\n')
+		if len(line) > 0 && line[:len(line)-1] == "\n" {
+			line = line[:len(line)-1]
+		}
 		if err == nil {
 			fmt.Printf("Read %d %d  %s\n", y, x, line)
 			text := line
