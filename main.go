@@ -25,7 +25,9 @@ type MyReader interface {
 func CaptureReader(reader io.Reader) []string {
 	var bufioReader *bufio.Reader = bufio.NewReader(reader)
 	var myReader MyReader = bufioReader
-	return Capture(myReader)
+	lines := Capture(myReader)
+
+	return lines
 }
 
 type State struct {
