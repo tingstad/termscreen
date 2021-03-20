@@ -30,15 +30,6 @@ func CaptureReader(reader io.Reader) []string {
 	return lines
 }
 
-type State struct {
-	x, y   int
-	screen [][]string
-}
-
-func CaptureShim(reader MyReader) []string {
-	lines := Capture(reader)
-	return lines
-}
 func Capture(reader MyReader) []string {
 	screen := make([]string, 0)
 	esc := "\x1b"
