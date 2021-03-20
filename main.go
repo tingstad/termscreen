@@ -72,7 +72,6 @@ func Capture(reader MyReader) []string {
 			y += 1
 		} else {
 			if err != io.EOF {
-				fmt.Printf("Rrrot %s", err)
 				panic(fmt.Sprintf("Error %s", err))
 			}
 			break
