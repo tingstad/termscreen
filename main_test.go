@@ -81,3 +81,13 @@ func TestPrintOver(t *testing.T) {
 		t.Errorf("Want \"world\", got %s", got)
 	}
 }
+
+func TestPrintOverPartly(t *testing.T) {
+	screen := []string{"hello"}
+	lines := Print(screen, "world", 4, 0)
+
+	got := strings.Join(lines, "")
+	if got != "hellworld" {
+		t.Errorf("Want \"hellworld\", got %s", got)
+	}
+}
