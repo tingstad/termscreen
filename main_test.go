@@ -98,7 +98,7 @@ func TestPrintOverPartly(t *testing.T) {
 }
 
 func TestUp(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\n\x1b[Bhi"))
+	lines := CaptureReader(strings.NewReader("hello\n\x1b[1Bhi"))
 
 	got := strings.Join(lines, "")
 	if got != "hello" {
