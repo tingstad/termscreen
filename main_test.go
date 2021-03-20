@@ -101,7 +101,7 @@ func TestDown(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\x1b[Bhi\n"))
 
 	got := strings.Join(lines, ",")
-	if got == "Xhello,hi" {
+	if got != "hello,     hi" {
 		t.Errorf("Want \"hello,hi\", got \"%s\"", got)
 	}
 }
