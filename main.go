@@ -89,6 +89,8 @@ func Print(screen []string, text string, x int, y int) []string {
 	if y < len(screen) {
 		if len(screen[y]) <= x+len(text) {
 			screen[y] = text
+		} else {
+			screen[y] = screen[y][0:x] + text
 		}
 	}
 	return screen
