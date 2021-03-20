@@ -37,6 +37,7 @@ func Capture(reader MyReader) []string {
 	for {
 		line, err := reader.ReadString('\n')
 		if err == nil {
+			x = 0
 			if len(line) > 0 && line[len(line)-1:] == "\n" {
 				line = line[:len(line)-1]
 			}
