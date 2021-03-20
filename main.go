@@ -93,7 +93,9 @@ func Print(screen []string, text string, x int, y int) []string {
 		}
 		prefix := ""
 		if x > 0 {
-			prefix = screen[y][0:x]
+			if x < len(screen[y]) {
+				prefix = screen[y][0:x]
+			}
 		}
 		screen[y] = prefix + text + suffix
 	}
