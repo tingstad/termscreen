@@ -28,7 +28,6 @@ func CaptureReader(reader io.Reader) []string {
 	lines := Capture(myReader)
 	for _, line := range lines {
 		if line[len(line)-1:] != "\n" {
-			panic("sad")
 			line = line + "\n"
 		}
 	}
