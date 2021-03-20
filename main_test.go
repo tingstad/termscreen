@@ -20,7 +20,7 @@ func (r *TestReader) ReadString(delim byte) (string, error) {
 }
 
 func TestOneLine(t *testing.T) {
-	lines := CaptureReaderNew(strings.NewReader("hello\n"))
+	lines := CaptureReader(strings.NewReader("hello\n"))
 
 	got := strings.Join(lines, "")
 	if got != "hello\n" {
