@@ -33,6 +33,17 @@ func CaptureReader(reader io.Reader) []string {
 	}
 	return lines
 }
+func CaptureReaderNew(reader io.Reader) []string {
+	var bufioReader *bufio.Reader = bufio.NewReader(reader)
+	var myReader MyReader = bufioReader
+	lines := Capture(myReader)
+	for _, line := range lines {
+		if line[len(line)-1:] != "\n" {
+			line = line + "\n"
+		}
+	}
+	return lines
+}
 
 func Capture(reader MyReader) []string {
 	screen := make([]string, 0)
