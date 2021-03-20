@@ -95,5 +95,13 @@ func TestPrintOverPartly(t *testing.T) {
 	if got != "hello     world" {
 		t.Errorf("Want \"hello     world\", got %s", got)
 	}
+}
 
+func TestUp(t *testing.T) {
+	lines := CaptureReader(strings.NewReader("hello\n"))
+
+	got := strings.Join(lines, "")
+	if got != "hello" {
+		t.Errorf("Want \"hello\", got \"%s\"", got)
+	}
 }
