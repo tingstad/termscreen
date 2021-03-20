@@ -48,6 +48,7 @@ func Capture(reader MyReader) []string {
 			fmt.Printf("Read %d %d  %s\n", y, x, line)
 			for {
 				indices := re.FindStringSubmatchIndex(line)
+				screen = Print(screen, line, x, y)
 				if indices != nil && len(indices) > 4 {
 					fmt.Printf("indices %d\n", indices)
 					countStart := indices[2]
@@ -63,7 +64,6 @@ func Capture(reader MyReader) []string {
 					}
 					fmt.Printf("index2 %d %d\n", indices[0], indices[1])
 				}
-				screen = Print(screen, line, x, y)
 				break
 			}
 			y += 1
