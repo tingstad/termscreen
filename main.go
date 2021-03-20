@@ -50,6 +50,7 @@ func Capture(reader MyReader) []string {
 					printable = text[:indices[0]]
 				}
 				screen = Print(screen, printable, x, y)
+				x += len(printable)
 				if indices != nil && len(indices) > 4 {
 					fmt.Printf("indices %d\n", indices)
 					countStart := indices[2]
