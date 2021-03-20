@@ -43,10 +43,6 @@ func TestTwoLines(t *testing.T) {
 	if two != "world" {
 		t.Errorf("Want \"world\", got %s", two)
 	}
-	all := strings.Join(lines, ", ")
-	if all != "hello, world" {
-		t.Errorf("Want \"hello, world\", got %s", all)
-	}
 }
 
 func TestPrint(t *testing.T) {
