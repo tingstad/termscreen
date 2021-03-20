@@ -56,7 +56,7 @@ func Capture(reader MyReader) []string {
 					runes := []rune(line)
 					_ = runes
 					code := string(line[start : start+1])
-					count := string(runes[countStart:countEnd])
+					count := string(line[countStart:countEnd])
 					switch code {
 					case "A": // Up
 						fmt.Printf("AAAA " + count)
