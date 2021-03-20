@@ -29,25 +29,25 @@ func TestOneLine(t *testing.T) {
 }
 
 func TestTwoLines(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\nworld\n"))
+	lines := CaptureReaderNew(strings.NewReader("hello\nworld\n"))
 
 	got := len(lines)
-	if got != 2 || lines[0] != "hello\n" {
+	if got != 2 || lines[0] != "hello" {
 		t.Errorf("Want 2, got %d", got)
 	}
 	one := lines[0]
-	if one != "hello\n" {
+	if one != "hello" {
 		t.Errorf("Want \"hello\", got %s", one)
 	}
 	two := lines[1]
-	if two != "world\n" {
+	if two != "world" {
 		t.Errorf("Want \"world\", got %s", two)
 	}
 	if strings.ReplaceAll(strings.Join(lines, " "), "\n", "") != "hello world" {
 		t.Errorf("Want \"hello world\", got other")
 	}
 	all := strings.Join(lines, "")
-	if all != "hello\nworld\n" {
+	if all != "helloworld" {
 		t.Errorf("Want \"world\", got %s", all)
 	}
 }
