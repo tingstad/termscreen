@@ -87,14 +87,14 @@ func Print(screen []string, text string, x int, y int) []string {
 		screen = append(screen, text)
 	}
 	if y < len(screen) {
+		suffix := ""
+		if len(screen[y]) > x+len(text) {
+			suffix = screen[y][x+len(text):]
+		}
 		if x == 0 && len(screen[y]) <= len(text) {
 			screen[y] = text
 		} else {
 			if x > 0 {
-				suffix := ""
-				if len(screen[y]) > x+len(text) {
-					suffix = screen[y][x+len(text):]
-				}
 				screen[y] = screen[y][0:x] + text + suffix
 			} else {
 				screen[y] = text + screen[y][len(text):]
