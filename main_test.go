@@ -98,6 +98,6 @@ func TestPrintOverPartly(t *testing.T) {
 	if got != "howdy world" {
 		t.Errorf("Want \"howdy world\", got %s", got)
 	}
-	got = Print([]string{"hello,"}, "owdy ", 1, 0)[0]
+	got = Print(screen, "world", 10, 0)[0]
 
 }
