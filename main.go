@@ -44,6 +44,8 @@ func Capture(reader MyReader) []string {
 			text := line
 			for {
 				indices := re.FindStringSubmatchIndex(text)
+				printable := text
+				Use(printable)
 				if indices != nil && len(indices) > 4 {
 					text = text[:indices[0]]
 				}
