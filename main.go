@@ -32,7 +32,7 @@ func CaptureReader(reader io.Reader) []string {
 		}
 	}
 	lines = CaptureReaderNew(reader)
-	return lines
+	return CaptureReaderNew(reader)
 }
 func CaptureReaderNew(reader io.Reader) []string {
 	var bufioReader *bufio.Reader = bufio.NewReader(reader)
