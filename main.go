@@ -91,7 +91,8 @@ func Print(screen []string, text string, x int, y int) []string {
 			screen[y] = text
 		} else {
 			if x > 0 {
-				screen[y] = screen[y][0:x] + text + ""
+				suffix := ""
+				screen[y] = screen[y][0:x] + text + suffix
 			} else {
 				screen[y] = text + screen[y][len(text):]
 			}
