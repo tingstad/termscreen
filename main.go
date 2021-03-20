@@ -34,6 +34,7 @@ func CaptureReader(reader io.Reader) []string {
 	for _, line := range lines {
 		if line[len(line)-1:] != "\n" {
 			fmt.Printf("hiehd")
+			panic("sad")
 		}
 	}
 	return lines
