@@ -73,7 +73,7 @@ func TestPrintDown(t *testing.T) {
 }
 
 func TestPrintOver(t *testing.T) {
-	screen := []string{"world"}
+	screen := []string{"hello"}
 	lines := Print(screen, "world", 0, 0)
 
 	got := strings.Join(lines, "")
