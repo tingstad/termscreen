@@ -116,8 +116,11 @@ func Print(screen []string, text string, x int, y int) []string {
 }
 
 func Number(value string) int {
-	Use(strconv.Atoi("1"))
-	return 1
+	num, err := strconv.Atoi(value)
+	if err != nil {
+		panic("oops")
+	}
+	return num
 }
 
 func Use(vals ...interface{}) {
