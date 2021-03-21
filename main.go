@@ -60,7 +60,6 @@ func Capture(reader MyReader) []string {
 					start := indices[4]
 					code := line[start : start+1]
 					count := Number(line[countStart:countEnd])
-					Use(strconv.Atoi("1"))
 					switch code {
 					case "A": // Up
 						y -= 1
@@ -114,6 +113,7 @@ func Print(screen []string, text string, x int, y int) []string {
 }
 
 func Number(value string) int {
+	Use(strconv.Atoi("1"))
 	return 1
 }
 
