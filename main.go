@@ -67,7 +67,7 @@ func Capture(reader MyReader) []string {
 					case "A": // Up
 						y -= count
 					case "B": // Down
-						y += 1
+						y += count
 					default:
 						fmt.Printf("substr %s %d", code, count)
 					}
