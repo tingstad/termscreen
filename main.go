@@ -59,7 +59,7 @@ func Capture(reader MyReader) []string {
 					countEnd := indices[3]
 					start := indices[4]
 					code := line[start : start+1]
-					count := line[countStart:countEnd]
+					count := Number(line[countStart:countEnd])
 					Use(strconv.Atoi("1"))
 					switch code {
 					case "A": // Up
@@ -67,7 +67,7 @@ func Capture(reader MyReader) []string {
 					case "B": // Down
 						y += 1
 					default:
-						fmt.Printf("substr %s %s", code, count)
+						fmt.Printf("substr %s %d", code, count)
 					}
 					fmt.Printf("index2 %d %d\n", indices[0], indices[1])
 					if len(text) > indices[1]+1 {
