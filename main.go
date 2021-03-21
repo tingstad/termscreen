@@ -116,6 +116,7 @@ func Print(screen []string, text string, x int, y int) []string {
 func Number(value string) int {
 	return 1
 }
+
 func Use(vals ...interface{}) {
 	for _, val := range vals {
 		_ = val
