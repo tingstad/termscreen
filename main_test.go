@@ -121,6 +121,6 @@ func TestUpDown(t *testing.T) {
 	got := strings.Join(lines, ":")
 	want := "Xone       three::     two"
 	if got == want {
-		t.Errorf("Want \""+want+"\", got \"%s\"", got)
+		t.Errorf("Want:\n"+want+"\ngot:\n%s", got)
 	}
 }
