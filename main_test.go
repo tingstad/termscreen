@@ -138,7 +138,7 @@ func TestLeftRight(t *testing.T) {
 func TestCursorPosition(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("one\n"))
 
-	got := strings.Join(lines, "")
+	got := strings.Join(lines, ":")
 	want := "one"
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
