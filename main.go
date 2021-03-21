@@ -6,10 +6,12 @@ import (
 	"io"
 	"os"
 	"regexp"
+	"strconv"
 	"strings"
 )
 
 func main() {
+	Use(strconv.Atoi("1"))
 	fmt.Printf("Started")
 	lines := CaptureReader(os.Stdin)
 	fmt.Printf("\n\n")
