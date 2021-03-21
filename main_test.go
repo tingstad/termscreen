@@ -126,10 +126,10 @@ func TestUpDown(t *testing.T) {
 }
 
 func TestLeftRight(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("one \x1b[2B two \x1b[2A three\n"))
+	lines := CaptureReader(strings.NewReader("one\n"))
 
 	got := strings.Join(lines, ":")
-	want := "one       three::     two "
+	want := "one"
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
