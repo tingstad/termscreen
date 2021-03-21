@@ -118,7 +118,7 @@ func Print(screen []string, text string, x int, y int) []string {
 func Number(value string) int {
 	num, err := strconv.Atoi(value)
 	if err != nil {
-		panic(fmt.Sprintf("Error %s", err))
+		panic(fmt.Sprintf("Error converting \"%s\" to int; %s", value, err))
 	}
 	return num
 }
