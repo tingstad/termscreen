@@ -88,6 +88,9 @@ func Capture(reader MyReader) []string {
 						x = count
 					default:
 						fmt.Printf("substr %s %d", code, count)
+						if code[0:1] == ";" {
+							y = count
+						}
 					}
 					fmt.Printf("index2 %d %d\n", indices[0], indices[1])
 					if len(text) > indices[1]+1 {
