@@ -61,7 +61,7 @@ func Capture(reader MyReader) []string {
 					code := text[start : start+1]
 					count := 1
 					if countEnd > countStart {
-						count = Number(line[countStart:countEnd])
+						count = Number(text[countStart:countEnd])
 					}
 					switch code {
 					case "A": // Up
