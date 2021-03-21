@@ -65,7 +65,7 @@ func Capture(reader MyReader) []string {
 					}
 					switch code {
 					case "A": // Up
-						y -= 1
+						y -= count
 					case "B": // Down
 						y += 1
 					default:
