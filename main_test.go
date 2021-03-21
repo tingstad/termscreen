@@ -114,6 +114,7 @@ func TestUp(t *testing.T) {
 		t.Errorf("Want \"ansio\", got \"%s\"", got)
 	}
 }
+
 func TestUpDown(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\n\x1b[Aansi\n"))
 
