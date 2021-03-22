@@ -57,8 +57,8 @@ func Capture(reader MyReader) []string {
 					fmt.Printf("indices %d\n", indices)
 					countStart := indices[2]
 					countEnd := indices[3]
-					start := indices[4]
-					code := text[start : start+1]
+					codeStart := indices[4]
+					code := text[codeStart : codeStart+1]
 					count := 1
 					if countEnd > countStart {
 						count = Number(text[countStart:countEnd])
@@ -90,7 +90,7 @@ func Capture(reader MyReader) []string {
 						fmt.Printf("substr %s %d", code, count)
 						if code[0:1] == ";" {
 							y = count
-							x = Number(text[start+1 : indices[5]-1])
+							x = Number(text[codeStart+1 : indices[5]-1])
 						}
 					}
 					fmt.Printf("index2 %d %d\n", indices[0], indices[1])
