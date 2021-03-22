@@ -59,7 +59,8 @@ func Capture(reader MyReader) []string {
 					countEnd := indices[3]
 					codeStart := indices[4]
 					codeEnd := indices[5]
-					code := text[codeStart : codeStart+1]
+					codes := text[codeStart : codeStart+1]
+					code := codes
 					count := 1
 					if countEnd > countStart {
 						count = Number(text[countStart:countEnd])
