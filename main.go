@@ -90,7 +90,7 @@ func Capture(reader MyReader) []string {
 						x = count
 					default:
 						fmt.Printf("substr %s %d", code, count)
-						if code[0:1] == ";" {
+						if code == ";" {
 							y = count
 							x = Number(text[codeStart+1 : codeEnd-1])
 						}
