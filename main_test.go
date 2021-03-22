@@ -136,7 +136,7 @@ func TestLeftRight(t *testing.T) {
 }
 
 func TestCursorPosition(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("one\n"))
+	lines := CaptureReader(strings.NewReader("\x1b[0;0Hone\n"))
 
 	got := strings.Join(lines, ":")
 	want := "one"
