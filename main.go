@@ -92,7 +92,10 @@ func Capture(reader MyReader) []string {
 						fmt.Printf("substr %s %d", code, count)
 						if codes[len(codes)-1:] == "H" {
 							y = count
-							x = Number(codes[1 : len(codes)-1])
+							if codes[0:1] == ";" {
+								codes = codes[1:]
+							}
+							x = Number(codes[0 : len(codes)-1])
 						}
 					}
 					fmt.Printf("index2 %d %d\n", indices[0], indices[1])
