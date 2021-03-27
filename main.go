@@ -91,7 +91,7 @@ func Capture(reader MyReader) []string {
 					default:
 						fmt.Printf("substr %s %d", code, count)
 						if codes[len(codes)-1:] == "H" { // Position
-							y = count
+							y = Max(0, count)
 							if codes[0:1] == ";" {
 								codes = codes[1:]
 							}
