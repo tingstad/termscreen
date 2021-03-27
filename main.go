@@ -98,7 +98,7 @@ func Capture(reader MyReader) []string {
 							if len(codes) > 1 {
 								x = Max(0, Number(codes[0:len(codes)-1]))
 							} else {
-								x = 1
+								x = 0
 							}
 						}
 					}
