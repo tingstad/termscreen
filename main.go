@@ -154,6 +154,13 @@ func Number(value string) int {
 	return num
 }
 
+func Max(x, y int) int {
+	if x < y {
+		return y
+	}
+	return x
+}
+
 func Use(vals ...interface{}) {
 	for _, val := range vals {
 		_ = val
