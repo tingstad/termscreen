@@ -95,7 +95,9 @@ func Capture(reader MyReader) []string {
 							if codes[0:1] == ";" {
 								codes = codes[1:]
 							}
-							x = Number(codes[0 : len(codes)-1])
+							if len(codes) > 0 {
+								x = Number(codes[0 : len(codes)-1])
+							}
 						}
 					}
 					fmt.Printf("index2 %d %d\n", indices[0], indices[1])
