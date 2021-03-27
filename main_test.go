@@ -136,12 +136,14 @@ func TestLeftRight(t *testing.T) {
 }
 
 func TestCursorPosition(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("\x1b[0;0Hone\n"))
+	for _, code := range []string{"0;0H"} {
+		lines := CaptureReader(strings.NewReader("\x1b[" + code + "one\n"))
 
-	got := strings.Join(lines, ":")
-	want := "one"
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
+		got := strings.Join(lines, ":")
+		want := "one"
+		if got != want {
+			t.Errorf("Want:\n%s\ngot:\n%s", want, got)
+		}
 	}
 }
 
