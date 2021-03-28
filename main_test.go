@@ -152,7 +152,7 @@ func TestCursorPosition(t *testing.T) {
 func TestCursorPosition2(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("\x1b[Hone\n"))
 
-	got := strings.Join(lines, ":")
+	got := strings.Join(lines, "\n")
 	want := "one"
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
