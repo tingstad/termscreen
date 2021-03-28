@@ -153,16 +153,16 @@ func TestCursorPosition(t *testing.T) {
 func TestCursorPosition2(t *testing.T) {
 	string := ""
 	for i := 4; i >= 2; i-- {
-		string += "\x1b[" + strconv.Itoa(i) + ";2Ho" + strconv.Itoa(i)
+		string += "\x1b[" + strconv.Itoa(i) + ";2Ho"
 	}
 	string += "\n"
 	lines := CaptureReader(strings.NewReader(string))
 
 	got := strings.Join(lines, "\n")
 	want := `
- o2
- o3
- o4`
+ o
+ o
+ o`
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
