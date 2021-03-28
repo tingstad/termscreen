@@ -167,6 +167,7 @@ func TestCursorPosition2(t *testing.T) {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
 }
+
 func TestEraseInLine(t *testing.T) {
 	for _, code := range []string{"0;0H", ";1H", "1H"} {
 		lines := CaptureReader(strings.NewReader("\x1b[" + code + "one\n"))
