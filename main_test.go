@@ -168,6 +168,18 @@ func TestCursorPosition2(t *testing.T) {
 	}
 }
 
+func TestEraseInLineAll(t *testing.T) {
+	str := "Hello, \x1b[1K world!\n"
+	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
+
+	got := lines
+	//nt := "Hello,  world!"
+	want := "        world!"
+	if got != want {
+		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
+	}
+}
+
 func TestEraseInLine(t *testing.T) {
 	str := "Hello, \x1b[1K world!\n"
 	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
