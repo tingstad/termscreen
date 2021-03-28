@@ -87,6 +87,9 @@ func Capture(reader MyReader) []string {
 						y -= count
 						x = 0
 					case "G": // Column
+						if countEnd == countStart {
+							x = 1
+						}
 						x = count
 					case "K": // Erase in line
 						if count == 2 {
