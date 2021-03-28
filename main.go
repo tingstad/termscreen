@@ -74,9 +74,6 @@ func Capture(reader MyReader) []string {
 						x += count
 					case "D": // Back
 						x = Max(0, x-count)
-						if x < 0 {
-							x = 0
-						}
 					case "E": // Next line
 						y += count
 						x = 0
