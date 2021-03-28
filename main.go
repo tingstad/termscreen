@@ -103,7 +103,7 @@ func Capture(reader MyReader) []string {
 						}
 					}
 					fmt.Printf("index2 %d %d\n", indices[0], indices[1])
-					if len(text) > indices[1]+1 {
+					if len(text) > indices[1] {
 						text = text[indices[1]:]
 					} else {
 						break
