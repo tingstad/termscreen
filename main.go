@@ -68,9 +68,6 @@ func Capture(reader MyReader) []string {
 					switch code {
 					case "A": // Up
 						y = Max(0, y-count)
-						if y < 0 {
-							y = 0
-						}
 					case "B": // Down
 						y += count
 					case "C": // Forward
