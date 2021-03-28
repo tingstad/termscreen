@@ -89,8 +89,9 @@ func Capture(reader MyReader) []string {
 					case "G": // Column
 						if countEnd == countStart {
 							x = 1
+						} else {
+							x = Max(0, count-1)
 						}
-						x = count
 					case "K": // Erase in line
 						if count == 2 {
 							screen[y] = ""
