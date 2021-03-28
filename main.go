@@ -88,6 +88,10 @@ func Capture(reader MyReader) []string {
 						x = 0
 					case "G": // Column
 						x = count
+					case "K": // Erase in line
+						if count == 2 {
+							screen[y] = ""
+						}
 					default:
 						fmt.Printf("substr %s %d", code, count)
 						if codes[len(codes)-1:] == "H" { // Position
