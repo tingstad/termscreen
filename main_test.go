@@ -118,15 +118,10 @@ func TestUp(t *testing.T) {
 func TestUpDown(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("one \x1b[2B two \x1b[2A three\n"))
 
-	got := strings.Join(lines, ":")
-	want := "one       three::     two "
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
-	want = `one       three
+	want := `one       three
 
      two `
-	got = strings.Join(lines, "\n")
+	got := strings.Join(lines, "\n")
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
