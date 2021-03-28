@@ -123,6 +123,13 @@ func TestUpDown(t *testing.T) {
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
+	want = `one       three
+
+     two `
+	got = strings.Join(lines, "\n")
+	if got != want {
+		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
+	}
 }
 
 func TestLeftRight(t *testing.T) {
