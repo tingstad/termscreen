@@ -169,7 +169,8 @@ func TestCursorPosition2(t *testing.T) {
 }
 
 func TestEraseInLine(t *testing.T) {
-	lines := strings.Join(CaptureReader(strings.NewReader("")), "\n")
+	str := ""
+	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
 
 	got := lines
 	want := ""
