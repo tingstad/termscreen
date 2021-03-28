@@ -169,7 +169,7 @@ func TestCursorPosition2(t *testing.T) {
 }
 
 func TestEraseInLine(t *testing.T) {
-	str := "Hello, world! \x1b[2K wat"
+	str := "Hello, world! \x1b[2K\n"
 	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
 
 	got := lines
