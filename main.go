@@ -94,7 +94,7 @@ func Capture(reader MyReader) []string {
 						} else if count == 0 || countEnd == countStart {
 							screen[y] = screen[y][0:x]
 						} else if count == 1 {
-							screen[y] = screen[y][x:]
+							screen[y] = strings.Repeat(" ", x) + screen[y][x:]
 						}
 					default:
 						fmt.Printf("substr %s %d", code, count)
