@@ -151,7 +151,7 @@ func TestCursorPosition(t *testing.T) {
 
 func TestCursorPosition2(t *testing.T) {
 	string := "\x1b[2;Hone\n"
-	for i := 3; i >= 0; i-- {
+	for i := 0; i >= 0; i-- {
 		string += ""
 	}
 	lines := CaptureReader(strings.NewReader(string))
