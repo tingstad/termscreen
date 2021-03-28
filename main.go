@@ -91,6 +91,8 @@ func Capture(reader MyReader) []string {
 					case "K": // Erase in line
 						if count == 2 {
 							screen[y] = ""
+						} else if countEnd > countStart {
+							screen[y] = screen[y][0:x]
 						}
 					default:
 						fmt.Printf("substr %s %d", code, count)
