@@ -152,8 +152,8 @@ func TestCursorPosition(t *testing.T) {
 
 func TestCursorPosition2(t *testing.T) {
 	string := ""
-	for i := 2; i >= 0; i-- {
-		string += "\x1b[" + strconv.Itoa(i+2) + ";2Ho"
+	for i := 4; i >= 2; i-- {
+		string += "\x1b[" + strconv.Itoa(i) + ";2Ho"
 	}
 	string += "\n"
 	lines := CaptureReader(strings.NewReader(string))
