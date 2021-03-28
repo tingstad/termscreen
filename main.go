@@ -73,7 +73,7 @@ func Capture(reader MyReader) []string {
 					case "C": // Forward
 						x += count
 					case "D": // Back
-						x -= count
+						x = x - count
 						if x < 0 {
 							x = 0
 						}
