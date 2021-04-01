@@ -40,7 +40,6 @@ func Capture(reader MyReader) []string {
 			if len(line) > 0 && line[len(line)-1:] == "\n" {
 				line = line[:len(line)-1]
 			}
-			fmt.Printf("Read %d %d  %s\n", y, x, line)
 			text := line
 			for {
 				indices := re.FindStringSubmatchIndex(text)
@@ -51,7 +50,6 @@ func Capture(reader MyReader) []string {
 				screen = Print(screen, printable, x, y)
 				x += len(printable)
 				if indices != nil && len(indices) > 4 {
-					fmt.Printf("indices %d\n", indices)
 					countStart := indices[2]
 					countEnd := indices[3]
 					codeStart := indices[4]
@@ -108,7 +106,6 @@ func Capture(reader MyReader) []string {
 							screen[y] = ""
 						}
 					default:
-						fmt.Printf("substr %s %d", code, count)
 						if codes[len(codes)-1:] == "H" { // Position
 							y = Max(0, count-1)
 							if codes[0:1] == ";" {
@@ -121,7 +118,6 @@ func Capture(reader MyReader) []string {
 							}
 						}
 					}
-					fmt.Printf("index2 %d %d\n", indices[0], indices[1])
 					if len(text) > indices[1] {
 						text = text[indices[1]:]
 					} else {
@@ -143,7 +139,6 @@ func Capture(reader MyReader) []string {
 }
 
 func Print(screen []string, text string, x int, y int) []string {
-	fmt.Printf("DEBUG Printf %d %d %s\n", x, y, text)
 	for y >= len(screen) {
 		screen = append(screen, "")
 	}
