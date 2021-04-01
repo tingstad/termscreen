@@ -89,6 +89,7 @@ func Capture(reader MyReader) []string {
 						if count == 0 || countEnd == countStart {
 							screen[y] = screen[y][0:x]
 							for _, row := range screen[0:y] {
+
 								Use(row)
 							}
 
