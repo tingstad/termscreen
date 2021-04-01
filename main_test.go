@@ -215,7 +215,7 @@ func TestEraseInDisplay(t *testing.T) {
 }
 
 func TestEraseInDisplayToBeginning(t *testing.T) {
-	str := "Hello,\n world! \x1b[2J\n"
+	str := "Hello, world \x1b[2J\n"
 	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
 
 	got := lines
