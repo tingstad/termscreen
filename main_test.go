@@ -213,3 +213,14 @@ func TestEraseInDisplay(t *testing.T) {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
 }
+
+func TestEraseInDisplayToBeginning(t *testing.T) {
+	str := "Hello,\n world! \x1b[2J\n"
+	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
+
+	got := lines
+	want := ""
+	if got != want {
+		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
+	}
+}
