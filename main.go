@@ -90,6 +90,7 @@ func Capture(reader MyReader) []string {
 
 						} else if count == 1 {
 						} else if count > 1 {
+							screen = screen[:0]
 						}
 					case "K": // Erase in Line
 						if count == 2 {
