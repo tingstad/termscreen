@@ -93,7 +93,7 @@ func Capture(reader MyReader) []string {
 							for idx := range screen[0:y] {
 								screen[idx] = ""
 							}
-						} else if count > 1 {
+						} else if count > 1 { // All
 							screen = screen[:0]
 							x = 0
 							y = 0
