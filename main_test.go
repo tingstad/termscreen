@@ -204,11 +204,11 @@ func TestEraseInLineEnd(t *testing.T) {
 }
 
 func TestEraseInDisplay(t *testing.T) {
-	str := "Hello, world! \x1b[1;6H\x1b[K\n"
+	str := "Hello, world! \x1b[2K\n"
 	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
 
 	got := lines
-	want := "Hello"
+	want := ""
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
