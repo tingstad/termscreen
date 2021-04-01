@@ -248,11 +248,11 @@ func TestEraseInDisplayToEnd(t *testing.T) {
 }
 
 func TestEraseInDisplayToBeginning(t *testing.T) {
-	str := "Hello,\nworld\n\x1b[1J\n"
+	str := "Hello,\nworld\x1b[1J\n"
 	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
 
 	got := lines
-	want := "\n\n"
+	want := "\n     "
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
