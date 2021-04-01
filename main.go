@@ -99,7 +99,7 @@ func Capture(reader MyReader) []string {
 							y = 0
 						}
 					case "K": // Erase in Line
-						if count == 2 {
+						if count == 2 { // All
 							screen[y] = ""
 						} else if count == 0 || countEnd == countStart { // To end
 							screen[y] = screen[y][0:x]
