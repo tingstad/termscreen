@@ -181,6 +181,13 @@ func Max(x, y int) int {
 	return x
 }
 
+func Min(x, y int) int {
+	if x < y {
+		return x
+	}
+	return y
+}
+
 func Use(vals ...interface{}) {
 	for _, val := range vals {
 		_ = val
