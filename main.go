@@ -87,6 +87,7 @@ func Capture(reader MyReader) []string {
 						}
 					case "J": // Erase in display
 						if count == 0 || countEnd == countStart {
+
 						}
 					case "K": // Erase in line
 						if count == 2 {
