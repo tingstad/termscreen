@@ -87,7 +87,9 @@ func Capture(reader MyReader) []string {
 						}
 					case "J": // Erase in Display
 						if count == 0 || countEnd == countStart { // To end
-							screen[y] = screen[y][0:x]
+							if len(screen[y]) > 0 {
+								screen[y] = screen[y][0:x]
+							}
 							screen = screen[0 : y+1]
 						} else if count == 1 { // To begining
 							for idx := range screen[0:y] {
