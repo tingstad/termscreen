@@ -11,11 +11,9 @@ import (
 )
 
 func main() {
-	fmt.Printf("Started")
 	lines := CaptureReader(os.Stdin)
-	fmt.Printf("\n\n")
 	for _, line := range lines {
-		fmt.Printf("Line %s", line)
+		fmt.Printf("%s", line)
 	}
 }
 
