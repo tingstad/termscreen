@@ -103,7 +103,7 @@ func Capture(reader MyReader) []string {
 							screen[y] = ""
 						} else if count == 0 || countEnd == countStart { // To end
 							screen[y] = screen[y][0:x]
-						} else if count == 1 {
+						} else if count == 1 { // To beginning
 							screen[y] = strings.Repeat(" ", x) + screen[y][x:]
 						}
 					default:
