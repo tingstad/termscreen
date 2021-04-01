@@ -13,7 +13,7 @@ import (
 func main() {
 	lines := CaptureReader(os.Stdin)
 	for _, line := range lines {
-		fmt.Printf("%s", line)
+		fmt.Printf("%s\n", line)
 	}
 }
 
