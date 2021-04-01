@@ -214,6 +214,16 @@ func TestEraseInDisplay(t *testing.T) {
 	}
 }
 
+func TestEraseInDisplayToEndEmpty(t *testing.T) {
+	str := "Howdy, earth\nHello, world \x1b[7D\x1b[A\x1b[0J\n"
+	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
+
+	got := lines
+	want := "Howdy,"
+	if got != want {
+		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
+	}
+}
 func TestEraseInDisplayToEnd(t *testing.T) {
 	str := "Howdy, earth\nHello, world \x1b[7D\x1b[A\x1b[0J\n"
 	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
