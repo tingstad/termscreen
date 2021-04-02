@@ -144,8 +144,8 @@ func Print(screen []string, text string, x int, y int) []string {
 	}
 	if y < len(screen) {
 		suffix := ""
-		if len(screen[y]) > x+len(text) {
-			suffix = screen[y][x+len(text):]
+		if Len(screen[y]) > x+Len(text) {
+			suffix = screen[y][x+Len(text):]
 		}
 		prefix := ""
 		if x > 0 {
