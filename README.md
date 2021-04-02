@@ -20,6 +20,6 @@ My experience of this has been mixed. I think the Vim script and setup works ver
 
 On the other hand, the Go compiler is also quite strict, giving some challenges with "x declared but not used". I had to add [extract variable](https://github.com/fvictorio/vim-extract-variable) functionality at a minimum.
 
-A general TCR challenge is thst "test first" is difficult. I usually implemented a change and then the test, often using Undo to get the test right. Changing the behaviour of already implemented and test-covered code is really not easy (unless the tests are deleted). It's like every function is an API you cannot break, it's challenging, but interesting.
+A general TCR challenge is thst "test first" is difficult. I usually implemented a feature and then the test, often using Undo to get the test right. Changing the behaviour of already implemented and test-covered code is really not easy (unless the tests are deleted). It's like every function is an API you cannot break, it's challenging, but interesting.
 
 To summarize, I like the general TCR setup, but I think InsertLeave activation might be too masochistic.
