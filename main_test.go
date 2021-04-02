@@ -273,3 +273,11 @@ func TestLenString(t *testing.T) {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
 }
+
+func TestLenColored(t *testing.T) {
+	got := Len("One \x1b[0m two")
+	want := 8
+	if got != want {
+		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+	}
+}
