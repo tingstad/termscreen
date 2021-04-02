@@ -1,6 +1,4 @@
-augroup TestAutoGroup
-    autocmd BufWritePost,InsertLeave *.go call TestCommitResetGo()
-augroup END
+autocmd BufWritePost,InsertLeave *.go call TestCommitResetGo()
 
 function! TestCommitResetGo()
     write
