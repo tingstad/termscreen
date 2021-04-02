@@ -283,9 +283,11 @@ func TestLenColored(t *testing.T) {
 }
 
 func TestPosZero(t *testing.T) {
-	got := Pos("", 0)
-	want := 0
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+	for _, str := range []string{"", "foo"} {
+		got := Pos(str, 0)
+		want := 0
+		if got != want {
+			t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+		}
 	}
 }
