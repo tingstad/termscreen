@@ -291,3 +291,13 @@ func TestPosZero(t *testing.T) {
 		}
 	}
 }
+
+func TestPosSimple(t *testing.T) {
+	for _, str := range []string{"", "foo"} {
+		got := Pos(str, 0)
+		want := 0
+		if got != want {
+			t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+		}
+	}
+}
