@@ -265,3 +265,11 @@ func TestLenEmpty(t *testing.T) {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
 }
+
+func TestLenString(t *testing.T) {
+	got := Len("Hello, world!")
+	want := 13
+	if got != want {
+		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+	}
+}
