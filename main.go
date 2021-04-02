@@ -161,6 +161,9 @@ func Print(screen []string, text string, x int, y int) []string {
 }
 
 func Pos(value string, i int) int {
+	if i == 0 {
+		return 0
+	}
 	re := regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
 	stripped := string(re.ReplaceAll([]byte(value), []byte("")))
 	return len(stripped)
