@@ -161,7 +161,7 @@ func Print(screen []string, text string, x int, y int) []string {
 }
 
 func Len(value string) int {
-	return Len(value)
+	return len(value)
 }
 
 func Number(value string) int {
