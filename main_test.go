@@ -293,7 +293,7 @@ func TestPosZero(t *testing.T) {
 }
 
 func TestPosSimple(t *testing.T) {
-	for _, str := range []string{"", "foo"} {
+	for _, str := range []string{"foo", "foo\x1b[m"} {
 		got := Pos(str, 0)
 		want := 0
 		if got != want {
