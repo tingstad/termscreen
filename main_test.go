@@ -6,11 +6,6 @@ import (
 	"testing"
 )
 
-type TestReader struct {
-	text  string
-	count int
-}
-
 func TestOneLine(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\n"))
 
