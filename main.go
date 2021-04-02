@@ -165,6 +165,12 @@ func Pos(value string, i int) int {
 		return 0
 	}
 	re := regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
+	for {
+		pos := re.FindStringIndex(value)
+		if pos == nil {
+			break
+		}
+	}
 	stripped := string(re.ReplaceAll([]byte(value), []byte("")))
 	return len(stripped)
 }
