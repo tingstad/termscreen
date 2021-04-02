@@ -301,3 +301,13 @@ func TestPosSimple(t *testing.T) {
 		}
 	}
 }
+
+func TestPos(t *testing.T) {
+	for _, str := range []string{"foo", "foo\x1b[m"} {
+		got := Pos(str, 1)
+		want := 1
+		if got != want {
+			t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+		}
+	}
+}
