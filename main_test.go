@@ -293,8 +293,7 @@ func TestPosZero(t *testing.T) {
 }
 
 func TestPosSimple(t *testing.T) {
-	str := "foo"
-	got := Pos(str, 1)
+	got := Pos("foo", 1)
 	want := 1
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
