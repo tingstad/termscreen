@@ -152,7 +152,7 @@ func Print(screen []string, text string, x int, y int) []string {
 			if x < Len(screen[y]) {
 				prefix = screen[y][0:x]
 			} else {
-				prefix = screen[y] + strings.Repeat(" ", x-len(screen[y]))
+				prefix = screen[y] + strings.Repeat(" ", x-Len(screen[y]))
 			}
 		}
 		screen[y] = prefix + text + suffix
