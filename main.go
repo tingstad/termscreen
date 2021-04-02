@@ -170,6 +170,7 @@ func Pos(value string, i int) int {
 		if pos == nil {
 			break
 		}
+		value = value[pos[1]:]
 	}
 	stripped := string(re.ReplaceAll([]byte(value), []byte("")))
 	return len(stripped)
