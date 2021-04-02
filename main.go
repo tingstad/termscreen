@@ -160,6 +160,14 @@ func Print(screen []string, text string, x int, y int) []string {
 	return screen
 }
 
+func Len(value string) int {
+	num, err := strconv.Atoi(value)
+	if err != nil {
+		panic(fmt.Sprintf("Error converting \"%s\" to int; %s", value, err))
+	}
+	return num
+}
+
 func Number(value string) int {
 	num, err := strconv.Atoi(value)
 	if err != nil {
