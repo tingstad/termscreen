@@ -298,6 +298,5 @@ func TestPosSimple(t *testing.T) {
 	want := 1
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-
 	}
 }
