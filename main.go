@@ -164,6 +164,7 @@ func Pos(value string, i int) int {
 	if i == 0 {
 		return 0
 	}
+	orig := value
 	re := regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
 	offset := 0
 	for {
@@ -174,8 +175,7 @@ func Pos(value string, i int) int {
 		offset += pos[1] - pos[0]
 		value = value[pos[1]:]
 	}
-	stripped := string(re.ReplaceAll([]byte(value), []byte("")))
-	return len(stripped)
+	return len(orig)
 }
 
 func Len(value string) int {
