@@ -8,7 +8,7 @@ This program captures the output and prints it top to bottom.
 
 ## Development
 
-I experimented with a strict type of TCR (Test && Commit || Reset) in Vim:
+I experimented with a strict type of TCR (Test && Commit || Reset) in Vim (see [vimrc](https://github.com/tingstad/capture-screen/blob/main/vimrc)):
 
 ```
 vim -c 'source vimrc' -O main.go main_test.go
