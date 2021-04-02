@@ -155,17 +155,13 @@ func TestCursorPosition2(t *testing.T) {
 }
 
 func TestCursorPositionAndPrint(t *testing.T) {
-	string := `
- o
- o
- o
-`
+	string := "\n o\n o\n o\x1b[3;4Hz\n"
 	lines := CaptureReader(strings.NewReader(string))
 
 	got := strings.Join(lines, "\n")
 	want := `
  o
- o
+ o z
  o`
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
