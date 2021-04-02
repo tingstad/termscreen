@@ -283,7 +283,7 @@ func TestLenColored(t *testing.T) {
 }
 
 func TestLenUnicode(t *testing.T) {
-	got := Len("↑")
+	got := len("↑")
 	want := 3
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
