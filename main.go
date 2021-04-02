@@ -174,7 +174,7 @@ func Pos(value string, i int) int {
 		offset += pos[1] - pos[0]
 		value = value[pos[1]:]
 	}
-	return i - offset
+	return i + offset
 }
 
 func Len(value string) int {
