@@ -168,7 +168,7 @@ func Pos(value string, i int) int {
 	offset := 0
 	for {
 		pos := re.FindStringIndex(value)
-		if pos == nil {
+		if pos == nil || pos[0] > i {
 			break
 		}
 		offset += pos[1] - pos[0]
