@@ -1,7 +1,6 @@
 package main
 
 import (
-	"io"
 	"strconv"
 	"strings"
 	"testing"
@@ -10,14 +9,6 @@ import (
 type TestReader struct {
 	text  string
 	count int
-}
-
-func (r *TestReader) ReadString(delim byte) (string, error) {
-	if r.count < 1 {
-		r.count++
-		return r.text, nil
-	}
-	return "", io.EOF
 }
 
 func TestOneLine(t *testing.T) {
