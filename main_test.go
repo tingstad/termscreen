@@ -154,6 +154,24 @@ func TestCursorPosition2(t *testing.T) {
 	}
 }
 
+func TestCursorPositionAndPrint(t *testing.T) {
+	string := ""
+	for i := 4; i >= 2; i-- {
+		string += "\x1b[" + strconv.Itoa(i) + ";2Ho"
+	}
+	string += "\n"
+	lines := CaptureReader(strings.NewReader(string))
+
+	got := strings.Join(lines, "\n")
+	want := `
+ o
+ o
+ o`
+	if got != want {
+		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
+	}
+}
+
 func TestEraseInLineAll(t *testing.T) {
 	for _, str := range []string{"", "Hi \x1b[1K", "Yo \x1b[2K", "\x1b[1K", "\x1b[2K", "\x1b[0K", "\x1b[K"} {
 		lines := strings.Join(CaptureReader(strings.NewReader(str+"\n")), "\n")
