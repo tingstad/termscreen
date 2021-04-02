@@ -257,3 +257,6 @@ func TestEraseInDisplayToBeginning(t *testing.T) {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
 }
+
+func TestLenEmpty(t *testing.T) {
+}
