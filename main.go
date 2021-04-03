@@ -8,9 +8,11 @@ import (
 	"regexp"
 	"strconv"
 	"strings"
+	"unicode/utf8"
 )
 
 func main() {
+	Use(utf8.RuneCountInString(""))
 	lines := CaptureReader(os.Stdin)
 	for _, line := range lines {
 		fmt.Printf("%s\n", line)
