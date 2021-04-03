@@ -7,7 +7,7 @@ import (
 )
 
 func TestOneLine(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello"))
+	lines := CaptureReader(strings.NewReader("hello\n"))
 
 	got := strings.Join(lines, "")
 	if got != "hello" {
@@ -33,7 +33,7 @@ func TestTwoLines(t *testing.T) {
 }
 
 func TestNoNewline(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\n"))
+	lines := CaptureReader(strings.NewReader("hello"))
 
 	got := strings.Join(lines, "")
 	if got != "hello" {
