@@ -100,8 +100,9 @@ func Capture(reader MyReader) []string {
 							y = 0
 						}
 					case "K": // Erase in Line
+						idx := Pos(screen[y], x)
 						if count == 0 || countEnd == countStart { // To end
-							screen[y] = screen[y][0:x]
+							screen[y] = screen[y][0:idx]
 						} else if count == 1 { // To beginning
 							screen[y] = strings.Repeat(" ", x) + screen[y][x:]
 						} else if count == 2 { // All
