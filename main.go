@@ -175,6 +175,7 @@ func Pos(value string, i int) int {
 		}
 		offset += pos[1] - pos[0]
 		passed := value[0:pos[0]]
+		offset += len(passed) - utf8.RuneCountInString(passed)
 		Use(passed)
 		value = value[pos[1]:]
 	}
