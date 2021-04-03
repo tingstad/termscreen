@@ -185,9 +185,7 @@ func Pos(value string, i int) int {
 }
 
 func Len(value string) int {
-	re := regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
-	stripped := re.ReplaceAll([]byte(value), []byte(""))
-	return len(stripped)
+	return ByteLen(value)
 }
 
 func ByteLen(value string) int {
