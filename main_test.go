@@ -32,6 +32,15 @@ func TestTwoLines(t *testing.T) {
 	}
 }
 
+func TestNoNewline(t *testing.T) {
+	lines := CaptureReader(strings.NewReader("hello\n"))
+
+	got := strings.Join(lines, "")
+	if got != "hello" {
+		t.Errorf("Want \"hello\", got \"%s\"", got)
+	}
+}
+
 func TestPrint(t *testing.T) {
 	screen := make([]string, 0)
 	lines := Print(screen, "hello", 0, 0)
