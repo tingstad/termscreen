@@ -90,7 +90,7 @@ func Capture(reader MyReader) []string {
 							}
 							screen = screen[0 : y+1]
 						} else if count == 1 { // To begining
-							screen[y] = strings.Repeat(" ", x) + screen[y][x:]
+							screen[y] = strings.Repeat(" ", x) + screen[y][idx:]
 							for idx := range screen[0:y] {
 								screen[idx] = ""
 							}
