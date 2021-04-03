@@ -179,7 +179,6 @@ func Pos(value string, i int) int {
 		value = value[pos[1]:]
 	}
 	Use(orig)
-	orig = orig[0 : i+offset]
 	offset += 0
 	return i + offset
 }
