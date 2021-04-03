@@ -174,6 +174,8 @@ func Pos(value string, i int) int {
 			break
 		}
 		offset += pos[1] - pos[0]
+		passed := value[0:pos[0]]
+		Use(passed)
 		value = value[pos[1]:]
 	}
 	Use(orig)
