@@ -133,7 +133,9 @@ func Capture(reader MyReader) []string {
 			if err != nil && err != io.EOF {
 				panic(fmt.Sprintf("Error %s", err))
 			}
-			break
+			if err != nil && err == io.EOF {
+				break
+			}
 		}
 	}
 	return screen
