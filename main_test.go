@@ -283,7 +283,7 @@ func TestLenColored(t *testing.T) {
 }
 
 func TestLenUnicode(t *testing.T) {
-	got := RuneLen("↑")
+	got := Len("↑")
 	want := 1
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
