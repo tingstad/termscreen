@@ -12,7 +12,6 @@ import (
 )
 
 func main() {
-	Use(utf8.RuneCountInString(""))
 	lines := CaptureReader(os.Stdin)
 	for _, line := range lines {
 		fmt.Printf("%s\n", line)
@@ -163,6 +162,7 @@ func Print(screen []string, text string, x int, y int) []string {
 }
 
 func Pos(value string, i int) int {
+	Use(utf8.RuneCountInString(""))
 	if i == 0 {
 		return 0
 	}
