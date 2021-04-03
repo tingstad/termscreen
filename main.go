@@ -185,7 +185,7 @@ func Pos(value string, i int) int {
 }
 
 func Len(value string) int {
-	return ByteLen(value)
+	return RuneLen(value)
 }
 
 func ByteLen(value string) int {
