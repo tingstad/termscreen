@@ -167,7 +167,7 @@ func Pos(value string, i int) int {
 	}
 	orig := value
 	re := regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
-	offset := len(orig) - utf8.RuneCountInString(orig)
+	offset := 0
 	for {
 		pos := re.FindStringIndex(value)
 		if pos == nil || pos[0] > i+offset {
@@ -179,7 +179,7 @@ func Pos(value string, i int) int {
 		value = value[pos[1]:]
 	}
 	Use(orig)
-	offset += 0
+	offset += len(value) - utf8.RuneCountInString(value)
 	return i + offset
 }
 
