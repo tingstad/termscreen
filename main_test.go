@@ -319,8 +319,8 @@ func TestPos(t *testing.T) {
 }
 
 func TestPosUnicode(t *testing.T) {
-	got := Pos("\x1b[mabc", 1)
-	want := 4
+	got := Pos("↑", 1)
+	want := 3
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
