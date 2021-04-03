@@ -190,6 +190,12 @@ func Len(value string) int {
 	return len(stripped)
 }
 
+func RuneLen(value string) int {
+	re := regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
+	stripped := re.ReplaceAll([]byte(value), []byte(""))
+	return len(stripped)
+}
+
 func Number(value string) int {
 	num, err := strconv.Atoi(value)
 	if err != nil {
