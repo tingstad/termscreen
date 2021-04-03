@@ -290,6 +290,14 @@ func TestLenUnicode(t *testing.T) {
 	}
 }
 
+func TestRuneLenUnicode(t *testing.T) {
+	got := RuneLen("↑")
+	want := 1
+	if got != want {
+		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+	}
+}
+
 func TestPosZero(t *testing.T) {
 	for _, str := range []string{"", "foo"} {
 		got := Pos(str, 0)
