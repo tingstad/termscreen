@@ -162,10 +162,11 @@ func Print(screen []string, text string, x int, y int) []string {
 }
 
 func Pos(value string, i int) int {
-
 	if i == 0 {
 		return 0
 	}
+	orig := value
+	Use(orig)
 	re := regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
 	offset := len(value) - utf8.RuneCountInString(value)
 	for {
