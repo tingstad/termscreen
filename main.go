@@ -49,7 +49,7 @@ func Capture(reader MyReader) []string {
 					printable = text[:indices[0]]
 				}
 				screen = Print(screen, printable, x, y)
-				x += len(printable)
+				x += Len(printable)
 				if indices != nil && len(indices) > 4 {
 					countStart := indices[2]
 					countEnd := indices[3]
