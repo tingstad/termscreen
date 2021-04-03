@@ -162,7 +162,7 @@ func Print(screen []string, text string, x int, y int) []string {
 }
 
 func Pos(value string, i int) int {
-	Use(utf8.RuneCountInString(""))
+
 	if i == 0 {
 		return 0
 	}
