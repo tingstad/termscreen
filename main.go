@@ -185,10 +185,6 @@ func Pos(value string, i int) int {
 }
 
 func Len(value string) int {
-	return RuneLen(value)
-}
-
-func RuneLen(value string) int {
 	re := regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
 	stripped := string(re.ReplaceAll([]byte(value), []byte("")))
 	return utf8.RuneCountInString(stripped)
