@@ -153,7 +153,7 @@ func Print(screen []string, text string, x int, y int) []string {
 			if x < RuneLen(screen[y]) {
 				prefix = screen[y][0:Pos(screen[y], x)]
 			} else {
-				prefix = screen[y] + strings.Repeat(" ", x-Len(screen[y]))
+				prefix = screen[y] + strings.Repeat(" ", x-RuneLen(screen[y]))
 			}
 		}
 		screen[y] = prefix + text + suffix
