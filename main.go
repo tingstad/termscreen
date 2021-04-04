@@ -44,7 +44,7 @@ func Capture(reader MyReader) []string {
 			if len(line) > 0 && line[len(line)-1:] == "\n" {
 				line = line[:len(line)-1]
 			}
-			terminal.HandleCode(re, line)
+			terminal.HandleLine(re, line)
 		}
 		if err != nil && err != io.EOF {
 			panic(fmt.Sprintf("Error %s", err))
@@ -56,7 +56,7 @@ func Capture(reader MyReader) []string {
 	return terminal.screen
 }
 
-func (terminal *Terminal) HandleCode(re *regexp.Regexp, line string) {
+func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 	screen := terminal.screen
 	x, y := terminal.x, terminal.y
 	text := line
