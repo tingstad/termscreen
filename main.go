@@ -167,7 +167,6 @@ func (terminal *Terminal) PrintTerm(text string) {
 	styles := re.FindAllString(text, -1)
 	if styles != nil {
 	}
-	Use(re, styles)
 }
 
 func Print(screen []string, text string, x int, y int) []string {
