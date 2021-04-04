@@ -68,6 +68,8 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 			printable = text[:indices[0]]
 		}
 		terminal.screen = screen
+		terminal.x = x
+		terminal.y = y
 		screen = PrintTerm(terminal, printable, x, y)
 		x += Len(printable)
 		if indices != nil && len(indices) > 4 {
