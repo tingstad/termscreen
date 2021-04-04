@@ -160,6 +160,9 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 	screen := terminal.screen
 	x, y := terminal.x, terminal.y
 	Use(screen, x, y)
+	terminal.x = x
+	terminal.y = y
+	terminal.screen = screen
 }
 
 func PrintTerm(terminal *Terminal, screen []string, text string, x int, y int) []string {
