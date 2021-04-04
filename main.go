@@ -67,7 +67,7 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 		if indices != nil && len(indices) > 4 {
 			printable = text[:indices[0]]
 		}
-		screen = terminal.PrintTerm(printable)
+		terminal.PrintTerm(printable)
 		terminal.x += Len(printable)
 		if indices != nil && len(indices) > 4 {
 			countStart := indices[2]
