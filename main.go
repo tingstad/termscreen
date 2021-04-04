@@ -92,6 +92,7 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 			} else {
 				break
 			}
+			Use(y)
 		} else {
 			break
 		}
