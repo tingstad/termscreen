@@ -29,6 +29,8 @@ func CaptureReader(reader io.Reader) []string {
 	return lines
 }
 
+type Terminal struct{}
+
 func Capture(reader MyReader) []string {
 	screen := make([]string, 0)
 	esc := "\x1b"
