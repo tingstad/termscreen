@@ -54,7 +54,7 @@ func Capture(reader MyReader) []string {
 				if indices != nil && len(indices) > 4 {
 					printable = text[:indices[0]]
 				}
-				screen = Print(screen, printable, x, y)
+				screen = PrintTerm(terminal, screen, printable, x, y)
 				x += Len(printable)
 				if indices != nil && len(indices) > 4 {
 					countStart := indices[2]
@@ -149,7 +149,7 @@ func Capture(reader MyReader) []string {
 }
 
 func PrintTerm(terminal *Terminal, screen []string, text string, x int, y int) []string {
-	return Print(terminal.screen, text, x, y)
+	return Print(screen, text, x, y)
 }
 
 func Print(screen []string, text string, x int, y int) []string {
