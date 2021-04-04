@@ -31,6 +31,7 @@ func CaptureReader(reader io.Reader) []string {
 
 type Terminal struct {
 	screen []string
+	x, y   int
 }
 
 func Capture(reader MyReader) []string {
