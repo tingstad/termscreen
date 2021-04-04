@@ -59,7 +59,6 @@ func Capture(reader MyReader) []string {
 func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 	screen := terminal.screen
 	terminal.x = 0
-	x := terminal.x
 	text := line
 	for {
 		indices := re.FindStringSubmatchIndex(text)
@@ -92,7 +91,6 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 			break
 		}
 	}
-	terminal.x = x
 	terminal.y += 1
 	terminal.screen = screen
 }
