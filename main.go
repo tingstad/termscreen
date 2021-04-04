@@ -148,8 +148,8 @@ func Capture(reader MyReader) []string {
 	return screen
 }
 
-func PrintTerm(terminal *Terminal, screen []string, text string, x int, y int) {
-
+func PrintTerm(terminal *Terminal, screen []string, text string, x int, y int) []string {
+	return Print(terminal.screen, text, x, y)
 }
 
 func Print(screen []string, text string, x int, y int) []string {
