@@ -126,7 +126,6 @@ func Capture(reader MyReader) []string {
 								x = 0
 							}
 						}
-						fmt.Printf("%d %d\n", terminal.x, terminal.y)
 					}
 					if len(text) > indices[1] {
 						text = text[indices[1]:]
