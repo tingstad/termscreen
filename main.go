@@ -84,7 +84,6 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 				count = Number(text[countStart:countEnd])
 			}
 			terminal.x = x
-			terminal.y = y
 			terminal.HandleCode(countStart, countEnd, codeStart, codeEnd, count, codes, code)
 			screen = terminal.screen
 			x, y = terminal.x, terminal.y
