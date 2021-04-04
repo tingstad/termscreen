@@ -29,7 +29,9 @@ func CaptureReader(reader io.Reader) []string {
 	return lines
 }
 
-type Terminal struct{}
+type Terminal struct {
+	screen []string
+}
 
 func Capture(reader MyReader) []string {
 	screen := make([]string, 0)
