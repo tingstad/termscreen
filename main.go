@@ -155,6 +155,9 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 	terminal.screen = screen
 }
 
+func (terminal *Terminal) HandleCode() {
+}
+
 func PrintTerm(terminal *Terminal, screen []string, text string, x int, y int) []string {
 	updated := Print(screen, text, x, y)
 	terminal.screen = updated
