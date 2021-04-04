@@ -86,7 +86,7 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 			terminal.x = x
 			terminal.HandleCode(countStart, countEnd, codeStart, codeEnd, count, codes, code)
 			screen = terminal.screen
-			x, y = terminal.x, terminal.y
+			x = terminal.x
 			if len(text) > indices[1] {
 				text = text[indices[1]:]
 			} else {
