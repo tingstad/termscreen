@@ -70,7 +70,7 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 		terminal.screen = screen
 		terminal.x = x
 		terminal.y = y
-		screen = PrintTerm(terminal, printable, x, y)
+		screen = PrintTerm(terminal, printable)
 		x += Len(printable)
 		if indices != nil && len(indices) > 4 {
 			countStart := indices[2]
@@ -171,7 +171,7 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 	terminal.screen = screen
 }
 
-func PrintTerm(terminal *Terminal, text string, x int, y int) []string {
+func PrintTerm(terminal *Terminal, text string) []string {
 	updated := Print(terminal.screen, text, terminal.x, terminal.y)
 	terminal.screen = updated
 	return updated
