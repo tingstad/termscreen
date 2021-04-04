@@ -58,6 +58,7 @@ func Capture(reader MyReader) []string {
 
 func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 	screen := terminal.screen
+	terminal.x = 0
 	x := terminal.x
 	text := line
 	x = 0
