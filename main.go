@@ -148,6 +148,9 @@ func Capture(reader MyReader) []string {
 	return screen
 }
 
+func (t *Terminal) HandleCode() {
+}
+
 func PrintTerm(terminal *Terminal, screen []string, text string, x int, y int) []string {
 	updated := Print(screen, text, x, y)
 	terminal.screen = updated
