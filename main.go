@@ -84,6 +84,8 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 			terminal.y = y
 			terminal.screen = screen
 			terminal.HandleCode(countStart, countEnd, codeStart, codeEnd, count, codes, code)
+			screen = terminal.screen
+			x, y = terminal.x, terminal.y
 			switch code {
 			case "A": // Up
 				y = Max(0, y-count)
