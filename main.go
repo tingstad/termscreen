@@ -36,7 +36,6 @@ type Terminal struct {
 
 func Capture(reader MyReader) []string {
 	terminal := &Terminal{screen: make([]string, 0)}
-	Use(terminal)
 	screen := terminal.screen
 	esc := "\x1b"
 	re := regexp.MustCompile(esc + "\\[([0-9]*)([ABCDEFGJK]|;?[0-9]*H)")
