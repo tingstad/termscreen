@@ -165,6 +165,8 @@ func (terminal *Terminal) PrintTerm(text string) {
 	terminal.screen = updated
 	re := regexp.MustCompile("\x1b\\[[0-9;]*m")
 	styles := re.FindAllString(text, -1)
+	if styles != nil {
+	}
 	Use(re, styles)
 }
 
