@@ -163,6 +163,8 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 func (terminal *Terminal) PrintTerm(text string) {
 	updated := Print(terminal.screen, text, terminal.x, terminal.y)
 	terminal.screen = updated
+	re := regexp.MustCompile("\x1b\\[[0-9;]*m")
+	Use(re)
 }
 
 func Print(screen []string, text string, x int, y int) []string {
