@@ -157,6 +157,9 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 }
 
 func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, count int, codes, code string) {
+	screen := terminal.screen
+	x, y := terminal.x, terminal.y
+	Use(screen, x, y)
 }
 
 func PrintTerm(terminal *Terminal, screen []string, text string, x int, y int) []string {
