@@ -80,6 +80,9 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 			if countEnd > countStart {
 				count = Number(text[countStart:countEnd])
 			}
+			terminal.x = x
+			terminal.y = y
+			terminal.screen = screen
 			terminal.HandleCode(countStart, countEnd, codeStart, codeEnd, count, codes, code)
 			switch code {
 			case "A": // Up
