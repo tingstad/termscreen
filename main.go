@@ -68,10 +68,8 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 			printable = text[:indices[0]]
 		}
 		terminal.screen = screen
-		terminal.x = x
 		screen = PrintTerm(terminal, printable)
 		terminal.x += Len(printable)
-		x += Len(printable)
 		if indices != nil && len(indices) > 4 {
 			countStart := indices[2]
 			countEnd := indices[3]
@@ -83,10 +81,8 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 			if countEnd > countStart {
 				count = Number(text[countStart:countEnd])
 			}
-			terminal.x = x
 			terminal.HandleCode(countStart, countEnd, codeStart, codeEnd, count, codes, code)
 			screen = terminal.screen
-			x = terminal.x
 			if len(text) > indices[1] {
 				text = text[indices[1]:]
 			} else {
