@@ -32,6 +32,7 @@ func CaptureReader(reader io.Reader) []string {
 type Terminal struct {
 	screen []string
 	x, y   int
+	style  string
 }
 
 func Capture(reader MyReader) []string {
