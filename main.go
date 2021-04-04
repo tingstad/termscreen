@@ -39,7 +39,7 @@ func Capture(reader MyReader) []string {
 	screen := terminal.screen
 	esc := "\x1b"
 	re := regexp.MustCompile(esc + "\\[([0-9]*)([ABCDEFGJK]|;?[0-9]*H)")
-	x, y := terminal.x, 0
+	x, y := terminal.x, terminal.y
 	for {
 		line, err := reader.ReadString('\n')
 		if err == nil || (err == io.EOF && len(line) > 0) {
