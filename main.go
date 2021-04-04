@@ -70,6 +70,7 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 		terminal.screen = screen
 		terminal.x = x
 		screen = PrintTerm(terminal, printable)
+		terminal.x += Len(printable)
 		x += Len(printable)
 		if indices != nil && len(indices) > 4 {
 			countStart := indices[2]
