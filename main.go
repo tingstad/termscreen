@@ -170,7 +170,7 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 }
 
 func PrintTerm(terminal *Terminal, screen []string, text string, x int, y int) []string {
-	updated := Print(screen, text, x, y)
+	updated := Print(terminal.screen, text, x, y)
 	terminal.screen = updated
 	return updated
 }
