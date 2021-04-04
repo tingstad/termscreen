@@ -43,11 +43,11 @@ func Capture(reader MyReader) []string {
 	for {
 		line, err := reader.ReadString('\n')
 		if err == nil || (err == io.EOF && len(line) > 0) {
-			x = 0
 			if len(line) > 0 && line[len(line)-1:] == "\n" {
 				line = line[:len(line)-1]
 			}
 			text := line
+			x = 0
 			for {
 				indices := re.FindStringSubmatchIndex(text)
 				printable := text
