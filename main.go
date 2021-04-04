@@ -92,7 +92,6 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 		}
 	}
 	terminal.y += 1
-	terminal.screen = screen
 }
 
 func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, count int, codes, code string) {
