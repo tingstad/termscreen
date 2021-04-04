@@ -61,7 +61,6 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 	terminal.x = 0
 	x := terminal.x
 	text := line
-	x = 0
 	for {
 		indices := re.FindStringSubmatchIndex(text)
 		printable := text
