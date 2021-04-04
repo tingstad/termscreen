@@ -70,7 +70,6 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 		screen = PrintTerm(terminal, screen, printable, x, y)
 		x += Len(printable)
 		if indices != nil && len(indices) > 4 {
-			terminal.HandleCode(indices)
 			countStart := indices[2]
 			countEnd := indices[3]
 			codeStart := indices[4]
@@ -81,6 +80,7 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 			if countEnd > countStart {
 				count = Number(text[countStart:countEnd])
 			}
+			terminal.HandleCode(countStart, countEnd, codeStart, codeEnd, count, codes, code)
 			switch code {
 			case "A": // Up
 				y = Max(0, y-count)
@@ -156,7 +156,7 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 	terminal.screen = screen
 }
 
-func (terminal *Terminal) HandleCode(indices []int) {
+func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, count int, codes, code string) {
 }
 
 func PrintTerm(terminal *Terminal, screen []string, text string, x int, y int) []string {
