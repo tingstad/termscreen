@@ -99,7 +99,7 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 	}
 	y += 1
 	terminal.x = x
-	terminal.y = y
+	terminal.y += 1
 	terminal.screen = screen
 }
 
