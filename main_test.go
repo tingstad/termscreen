@@ -336,10 +336,11 @@ func TestPosUnicode(t *testing.T) {
 }
 
 func TestPrintStyle(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\n"))
+	lines := CaptureReader(strings.NewReader("\x1b[31mRED\nHello"))
 
-	got := strings.Join(lines, "")
-	if got != "hello" {
-		t.Errorf("Want \"hello\", got \"%s\"", got)
+	got := strings.Join(lines, ":")
+	want := "\x1b[31mRED:\x1b[31mHello"
+	if got != want {
+		t.Errorf("Want \"%s\", got \"%s\"", want, got)
 	}
 }
