@@ -173,7 +173,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 		} else {
 			terminal.style += strings.Join(styles, "")
 		}
-		fmt.Printf("Styles %s\n", styles[0])
+		fmt.Printf("DEBUG Styles %s\n", styles[0])
 	}
 }
 
