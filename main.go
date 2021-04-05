@@ -67,7 +67,6 @@ func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
 			printable = text[:indices[0]]
 		}
 		terminal.PrintTerm(printable)
-		terminal.x += Len(printable)
 		if indices != nil && len(indices) > 4 {
 			countStart := indices[2]
 			countEnd := indices[3]
@@ -163,6 +162,7 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 func (terminal *Terminal) PrintTerm(text string) {
 	updated := Print(terminal.screen, text, terminal.x, terminal.y)
 	terminal.screen = updated
+	terminal.x += Len(text)
 	re := regexp.MustCompile("\x1b\\[[0-9;]*m")
 	styles := re.FindAllString(text, -1)
 	if styles != nil {
