@@ -334,3 +334,12 @@ func TestPosUnicode(t *testing.T) {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
 }
+
+func TestPrintStyle(t *testing.T) {
+	lines := CaptureReader(strings.NewReader("hello\n"))
+
+	got := strings.Join(lines, "")
+	if got != "hello" {
+		t.Errorf("Want \"hello\", got \"%s\"", got)
+	}
+}
