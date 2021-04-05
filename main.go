@@ -160,6 +160,7 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 }
 
 func (terminal *Terminal) PrintTerm(text string) {
+	fmt.Printf("DEBUG Print text %s\n", text)
 	screen := terminal.screen
 	screen = Print(screen, terminal.style, terminal.x, terminal.y)
 	screen = Print(screen, text, terminal.x, terminal.y)
