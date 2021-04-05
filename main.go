@@ -169,7 +169,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 		if regexp.MustCompile("\x1b\\[0?m").MatchString(styles[len(styles)-1]) {
 			terminal.style = ""
 		}
-		fmt.Printf("Styles %s\n", styles[0])
+		//fmt.Printf("Styles %s\n", styles[0])
 	}
 }
 
