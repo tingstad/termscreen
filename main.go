@@ -161,10 +161,10 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 
 func (terminal *Terminal) PrintTerm(text string) {
 	screen := terminal.screen
-	updated := Print(screen, terminal.style, terminal.x, terminal.y)
-	terminal.screen = updated
-	updated = Print(terminal.screen, text, terminal.x, terminal.y)
-	terminal.screen = updated
+	screen = Print(screen, terminal.style, terminal.x, terminal.y)
+	terminal.screen = screen
+	screen = Print(terminal.screen, text, terminal.x, terminal.y)
+	terminal.screen = screen
 	terminal.x += Len(text)
 	re := regexp.MustCompile("\x1b\\[[0-9;]*m")
 	styles := re.FindAllString(text, -1)
