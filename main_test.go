@@ -344,3 +344,13 @@ func TestPrintStyle(t *testing.T) {
 		t.Errorf("Want \"%s\", got \"%s\"", want, got)
 	}
 }
+
+func TestPrintStyleReset(t *testing.T) {
+	lines := CaptureReader(strings.NewReader("\x1b[31mRED\nHello"))
+
+	got := strings.Join(lines, ":")
+	want := "\x1b[31mRED:\x1b[31mHello"
+	if got != want {
+		t.Errorf("Want \"%s\", got \"%s\"", want, got)
+	}
+}
