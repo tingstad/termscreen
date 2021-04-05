@@ -163,7 +163,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 	screen := terminal.screen
 	screen = Print(screen, terminal.style, terminal.x, terminal.y)
 	terminal.screen = screen
-	screen = Print(terminal.screen, text, terminal.x, terminal.y)
+	screen = Print(screen, text, terminal.x, terminal.y)
 	terminal.screen = screen
 	terminal.x += Len(text)
 	re := regexp.MustCompile("\x1b\\[[0-9;]*m")
