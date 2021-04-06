@@ -377,6 +377,7 @@ func TestPrintStyleResetOptimize(t *testing.T) {
 
 func TestPrintStyleBug(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("\x1b[0m\nb"))
+	//lines := CaptureReader(strings.NewReader("\x1b[0m\n\x1b[1;1Hb"))
 
 	got := lines[1]
 	want := "\x1b[0mb"
