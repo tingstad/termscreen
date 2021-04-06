@@ -183,8 +183,6 @@ func (terminal *Terminal) PrintTerm(text string) {
 				break
 			}
 		}
-		if len(terminal.style) > 2 && terminal.style[len(terminal.style)-3:] == "[0m" {
-		}
 		terminal.style += strings.Join(styles, "")
 		fmt.Printf("DEBUG Styles %q\n", styles)
 	}
