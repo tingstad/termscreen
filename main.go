@@ -162,8 +162,8 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 func (terminal *Terminal) PrintTerm(text string) {
 	fmt.Printf("DEBUG Print text %q %+v\n", text, terminal)
 	screen := terminal.screen
-	screen = Print(screen, terminal.style, terminal.x, terminal.y)
-	screen = Print(screen, text, terminal.x, terminal.y)
+	//screen = Print(screen, terminal.style, terminal.x, terminal.y)
+	screen = Print(screen, terminal.style+text, terminal.x, terminal.y)
 	terminal.screen = screen
 	terminal.x += Len(text)
 	re := regexp.MustCompile("\x1b\\[[0-9;]*m")
