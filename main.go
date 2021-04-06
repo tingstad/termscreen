@@ -171,6 +171,8 @@ func (terminal *Terminal) PrintTerm(text string) {
 	if styles != nil {
 		for i := len(styles) - 1; i >= 0; i-- {
 			if styles[i] == "\x1b[0m" || styles[i] == "\x1b[m" {
+				if len(terminal.style) > 2 {
+				}
 				styles = styles[i:]
 				break
 			}
