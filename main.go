@@ -169,6 +169,8 @@ func (terminal *Terminal) PrintTerm(text string) {
 	re := regexp.MustCompile("\x1b\\[[0-9;]*m")
 	styles := re.FindAllString(text, -1)
 	if styles != nil {
+		for i := len(styles) - 1; i >= 0; i-- {
+		}
 		if regexp.MustCompile("\x1b\\[0?m").MatchString(styles[len(styles)-1]) {
 			terminal.style = ""
 		} else {
