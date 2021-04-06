@@ -310,6 +310,14 @@ func TestLenUnicode(t *testing.T) {
 	}
 }
 
+func TestLenColored2(t *testing.T) {
+	got := Len("One \x1b[0m two")
+	want := 8
+	if got != want {
+		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+	}
+}
+
 func TestPosZero(t *testing.T) {
 	for _, str := range []string{"", "foo"} {
 		got := Pos(str, 0)
