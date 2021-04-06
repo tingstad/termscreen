@@ -173,7 +173,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 			if styles[i] == "\x1b[0m" || styles[i] == "\x1b[m" {
 				if len(terminal.style) > 2 && (terminal.style[len(terminal.style)-3:] == "[0m" || terminal.style[len(terminal.style)-2:] == "[m") {
 					if i < len(styles) {
-						styles = styles[i:]
+						styles = styles[i+1:]
 					}
 				}
 				styles = styles[i:]
