@@ -174,6 +174,8 @@ func (terminal *Terminal) PrintTerm(text string) {
 				if len(terminal.style) > 2 && (terminal.style[len(terminal.style)-3:] == "[0m" || terminal.style[len(terminal.style)-2:] == "[m") {
 					if i < len(styles)-1 {
 						styles = styles[i+1:]
+					} else {
+						styles = styles[:]
 					}
 				}
 				styles = styles[i:]
