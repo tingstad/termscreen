@@ -203,6 +203,7 @@ func Print(screen []string, text string, x int, y int) []string {
 		} else {
 			prefix = screen[y] + strings.Repeat(" ", x-Len(screen[y]))
 		}
+		fmt.Printf("DEBUG prefix %q\n", prefix)
 		screen[y] = prefix + text + suffix
 	}
 	return screen
