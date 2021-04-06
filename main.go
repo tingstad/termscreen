@@ -204,6 +204,7 @@ func Print(screen []string, text string, x int, y int) []string {
 			prefix = screen[y] + strings.Repeat(" ", x-Len(screen[y]))
 		}
 		fmt.Printf("DEBUG prefix %q\n", prefix)
+		fmt.Printf("DEBUG suffix %q\n", suffix)
 		screen[y] = prefix + text + suffix
 	}
 	return screen
