@@ -328,7 +328,7 @@ func TestPos(t *testing.T) {
 }
 
 func TestPosZeroAnsi(t *testing.T) {
-	got := Pos("\x1b[mabc", 1)
+	got := Pos("\x1b[mFoo", 1)
 	want := 4
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
