@@ -374,3 +374,13 @@ func TestPrintStyleResetOptimize(t *testing.T) {
 		t.Errorf("Want \"%s\", got \"%s\"", want, got)
 	}
 }
+
+func TestPrintStyleBug(t *testing.T) {
+	lines := CaptureReader(strings.NewReader("Foo \x1b[31m\x1b[0m \n bar"))
+
+	got := lines[1]
+	want := "\x1b[0m bar"
+	if got != want {
+		t.Errorf("Want \"%s\", got \"%s\"", want, got)
+	}
+}
