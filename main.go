@@ -177,8 +177,9 @@ func (terminal *Terminal) PrintTerm(text string) {
 					} else {
 						styles = styles[:]
 					}
+				} else {
+					styles = styles[i:]
 				}
-				styles = styles[i:]
 				break
 			}
 		}
