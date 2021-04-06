@@ -93,13 +93,14 @@ func TestPrintOverPartly(t *testing.T) {
 	}
 }
 
-func TestPrintBug(t *testing.T) {
-	screen := []string{"hello"}
-	lines := Print(screen, "world", 0, 0)
+func FixTestPrintBug(t *testing.T) {
+	screen := []string{"\x1b[m  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2"}
+	lines := Print(screen, ">", 0, 0)
 
 	got := strings.Join(lines, "")
-	if got != "world" {
-		t.Errorf("Want \"world\", got %s", got)
+	want := "\x1b[m>  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2"
+	if got != want {
+		t.Errorf("Want \"%s\", got %s", want, got)
 	}
 }
 
