@@ -93,6 +93,16 @@ func TestPrintOverPartly(t *testing.T) {
 	}
 }
 
+func TestPrintBug(t *testing.T) {
+	screen := []string{"hello"}
+	lines := Print(screen, "world", 0, 0)
+
+	got := strings.Join(lines, "")
+	if got != "world" {
+		t.Errorf("Want \"world\", got %s", got)
+	}
+}
+
 func TestDown(t *testing.T) {
 	lines := CaptureReader(strings.NewReader("hello\x1b[Bhi\n"))
 
