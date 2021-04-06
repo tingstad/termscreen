@@ -319,8 +319,8 @@ func TestLenColored2(t *testing.T) {
 }
 
 func TestLenColoredBug(t *testing.T) {
-	got := Len("\x1b[31mOne \x1b[0m two")
-	want := 8
+	got := Len("\x1b[m  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2")
+	want := 43
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
