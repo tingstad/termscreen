@@ -175,7 +175,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 					if i < len(styles)-1 {
 						styles = styles[i+1:]
 					} else {
-						styles = styles[:]
+						styles = styles[:0]
 					}
 				} else {
 					styles = styles[i:]
