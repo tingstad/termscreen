@@ -346,10 +346,10 @@ func TestPrintStyle(t *testing.T) {
 }
 
 func TestPrintStyleAccumulate(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("\x1b[31mRED\nHello"))
+	lines := CaptureReader(strings.NewReader("\x1b[31mRE\x1b[1mD\nHello"))
 
-	got := strings.Join(lines, ":")
-	want := "\x1b[31mRED:\x1b[31mHello"
+	got := lines[1]
+	want := "\x1b[31m\x1b[1mHello"
 	if got != want {
 		t.Errorf("Want \"%s\", got \"%s\"", want, got)
 	}
