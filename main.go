@@ -171,6 +171,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 	if styles != nil {
 		for i := len(styles) - 1; i >= 0; i-- {
 			if styles[i][1:] == "[0m" {
+				fmt.Printf("DEBUG Reset %q\n", styles)
 			}
 		}
 		if regexp.MustCompile("\x1b\\[0?m").MatchString(styles[len(styles)-1]) {
