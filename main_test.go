@@ -335,6 +335,14 @@ func TestPosZeroAnsi(t *testing.T) {
 	}
 }
 
+func TestPosBug(t *testing.T) {
+	got := Pos("\x1b[mFoo", 0)
+	want := 3
+	if got != want {
+		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+	}
+}
+
 func TestPosUnicode(t *testing.T) {
 	got := Pos("↑ ", 1)
 	want := 3
