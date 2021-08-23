@@ -160,7 +160,6 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 }
 
 func (terminal *Terminal) PrintTerm(text string) {
-	fmt.Printf("DEBUG Print text %q %+v\n", text, terminal)
 	screen := terminal.screen
 	//screen = Print(screen, terminal.style, terminal.x, terminal.y)
 	screen = Print(screen, terminal.style+text, terminal.x, terminal.y)
@@ -184,7 +183,6 @@ func (terminal *Terminal) PrintTerm(text string) {
 			}
 		}
 		terminal.style += strings.Join(styles, "")
-		fmt.Printf("DEBUG Styles %q\n", styles)
 	}
 }
 
@@ -203,28 +201,50 @@ func Print(screen []string, text string, x int, y int) []string {
 		} else {
 			prefix = screen[y] + strings.Repeat(" ", x-Len(screen[y]))
 		}
-		fmt.Printf("DEBUG prefix %q\n", prefix)
-		fmt.Printf("DEBUG suffix %q\n", suffix)
 		screen[y] = prefix + text + suffix
 	}
 	return screen
 }
 
+// Returns byte index of letter #i in string (incl. leading style code):
 func Pos(value string, i int) int {
+	if len(value) == 0 {
+		return 0
+	}
 	re := regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
 	offset := 0
+	columns := 0
 	for {
 		pos := re.FindStringIndex(value)
-		if pos == nil || pos[0] > i+offset {
-			break
+		passed := value
+		if pos != nil {
+			passed = value[0:pos[0]]
 		}
-		offset += pos[1] - pos[0]
-		passed := value[0:pos[0]]
-		offset += len(passed) - utf8.RuneCountInString(passed)
-		value = value[pos[1]:]
+		runeCount := 0
+		for index, w := 0, 0; index < len(passed); index += w {
+			if len(passed) == 0 {
+				panic("Loop error")
+			}
+			_, width := utf8.DecodeRuneInString(passed[index:])
+			w = width
+			if columns+runeCount >= i {
+				return offset + index
+			}
+			runeCount++
+		}
+		if runeCount != utf8.RuneCountInString(passed) {
+			panic("Runecount error")
+		}
+		columns += runeCount
+		offset += len(passed)
+		if columns >= i {
+			return offset
+		}
+		if pos != nil {
+			value = value[pos[1]:]
+			offset += pos[1] - pos[0]
+		}
 	}
-	offset += len(value) - utf8.RuneCountInString(value)
-	return i + offset
 }
 
 func Len(value string) int {

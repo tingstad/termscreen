@@ -356,15 +356,30 @@ func TestPos(t *testing.T) {
 
 func TestPosZeroAnsi(t *testing.T) {
 	got := Pos("\x1b[mFoo", 0)
-	want := 3
+	want := 0
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
 }
 
-func FixTestPosBug(t *testing.T) {
-	got := Pos("\x1b[m  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2", 1)
-	want := 4
+func TestPosBug(t *testing.T) {
+	//byte index:           1            2
+	//      0   1234567   890123456789   0123
+	str := "\x1b[m  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2"
+	//col:  0     01234       45678901     123456789012
+	//                              1               2
+	AssertEquals(t, 0, Pos(str, 0))
+	AssertEquals(t, 4, Pos(str, 1))
+	AssertEquals(t, 6, Pos(str, 3))
+	AssertEquals(t, 7, Pos(str, 4))
+	AssertEquals(t, 13, Pos(str, 5))
+	AssertEquals(t, 14, Pos(str, 6))
+	AssertEquals(t, 18, Pos(str, 10))
+	AssertEquals(t, 19, Pos(str, 11))
+	AssertEquals(t, 23, Pos(str, 12))
+}
+
+func AssertEquals(t *testing.T, want int, got int) {
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
