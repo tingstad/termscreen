@@ -340,6 +340,7 @@ func TestResetCode(t *testing.T) {
 	assertResetCode(true, "\x1b[1;m")
 	assertResetCode(true, "\x1b[;0;m")
 	assertResetCode(true, "\x1b[;;;m")
+	assertResetCode(true, "\x1b[1;31;m")
 	assertResetCode(true, "\x1b[1;31;0m")
 	assertResetCode(true, "\x1b[1;31;0;m")
 	assertResetCode(false, "")
