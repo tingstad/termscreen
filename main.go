@@ -172,16 +172,6 @@ func (terminal *Terminal) PrintTerm(text string) {
 	terminal.style = UpdateStyle(styles)
 }
 
-func UpdateStyle(styles []string) string {
-	for i := len(styles) - 1; i >= 0; i-- {
-		if ansiResetCode.MatchString(styles[i]) {
-			styles = styles[i:]
-			break
-		}
-	}
-	return strings.Join(styles, "")
-}
-
 func Print(screen []string, text string, x int, y int) []string {
 	for y >= len(screen) {
 		screen = append(screen, "")
@@ -202,6 +192,16 @@ func Print(screen []string, text string, x int, y int) []string {
 		screen[y] = prefix + text + suffix
 	}
 	return screen
+}
+
+func UpdateStyle(styles []string) string {
+	for i := len(styles) - 1; i >= 0; i-- {
+		if ansiResetCode.MatchString(styles[i]) {
+			styles = styles[i:]
+			break
+		}
+	}
+	return strings.Join(styles, "")
 }
 
 // Returns byte index of letter #i (0-based) in string (incl. leading style code):
