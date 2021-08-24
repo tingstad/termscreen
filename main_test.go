@@ -315,6 +315,7 @@ func FixTestPrintStyleBug(t *testing.T) {
 
 func TestUpdateStyle(t *testing.T) {
 	AssertEqualsStr(t, "", UpdateStyle("", []string{}))
+	AssertEqualsStr(t, "", UpdateStyle("", []string{""}))
 	AssertEqualsStr(t, "\x1b[33m", UpdateStyle("\x1b[33m", []string{}))
 	AssertEqualsStr(t, "\x1b[33m", UpdateStyle("\x1b[33m", []string{""}))
 	AssertEqualsStr(t, "\x1b[33m", UpdateStyle("", []string{"\x1b[33m"}))
