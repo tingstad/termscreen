@@ -11,6 +11,7 @@ func TestOneLine(t *testing.T) {
 	lines := Capture(StrReader("hello\n"))
 
 	got := strings.Join(lines, "")
+	AssertEqualsStr(t, "hello", got)
 	if got != "hello" {
 		t.Errorf("Want \"hello\", got \"%s\"", got)
 	}
