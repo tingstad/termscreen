@@ -171,21 +171,6 @@ func (terminal *Terminal) PrintTerm(text string) {
 	if styles != nil {
 		style := UpdateStyle(terminal.style, styles)
 		terminal.style = style
-		for i := len(styles) - 1; i >= 0; i-- {
-			if styles[i] == "\x1b[0m" || styles[i] == "\x1b[m" {
-				if len(terminal.style) > 2 && (terminal.style[len(terminal.style)-3:] == "[0m" || terminal.style[len(terminal.style)-2:] == "[m") {
-					if i < len(styles)-1 {
-						styles = styles[i+1:]
-					} else {
-						styles = styles[:0]
-					}
-				} else {
-					styles = styles[i:]
-				}
-				break
-			}
-		}
-		terminal.style += strings.Join(styles, "")
 	}
 }
 
@@ -204,7 +189,7 @@ func UpdateStyle(terminalStyle string, styles []string) string {
 			break
 		}
 	}
-	return ""
+	return terminalStyle + strings.Join(styles, "")
 }
 
 func Print(screen []string, text string, x int, y int) []string {
