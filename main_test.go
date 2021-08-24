@@ -184,9 +184,8 @@ func TestEraseInDisplayToEndEmpty(t *testing.T) {
 	str := "\x1b[0J\n"
 	lines := strings.Join(Capture(StrReader(str)), "\n")
 
-	got := lines
 	want := ""
-	AssertEqualsStr(t, want, got)
+	AssertEqualsStr(t, want, lines)
 }
 
 func TestEraseInDisplayToBeginningEmpty(t *testing.T) {
