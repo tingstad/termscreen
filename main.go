@@ -169,7 +169,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 	terminal.x += Len(text)
 	styles := ansiStyleCodes.FindAllString(terminal.style+text, -1)
 	if styles != nil {
-		terminal.style = UpdateStyle(terminal.style, styles)
+		terminal.style = UpdateStyle("", styles)
 	}
 }
 
