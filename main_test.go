@@ -382,6 +382,7 @@ func TestPosBug(t *testing.T) {
 
 func TestPosUnicode(t *testing.T) {
 	got := Pos("↑ ", 1)
+	AssertEquals(t, 3, got)
 	want := 3
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
