@@ -217,9 +217,7 @@ func TestLenString(t *testing.T) {
 }
 
 func TestLenColored(t *testing.T) {
-	got := Len("One \x1b[0m two")
-	want := 8
-	AssertEquals(t, want, got)
+	AssertEquals(t, 8, Len("One \x1b[0m two"))
 }
 
 func TestLenUnicode(t *testing.T) {
