@@ -314,6 +314,7 @@ func FixTestPrintStyleBug(t *testing.T) {
 }
 
 func TestUpdateStyle(t *testing.T) {
+	UpdateStyle("", []string{})
 }
 
 func StrReader(str string) MyReader {
