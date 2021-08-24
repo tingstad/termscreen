@@ -40,7 +40,7 @@ type Terminal struct {
 
 func Capture(reader MyReader) []string {
 	terminal := &Terminal{screen: make([]string, 0), x: 0, y: 0, style: ""}
-	ansiControlCodes := regexp.MustCompile("\x1b" + "\\[([0-9]*)([ABCDEFGJK]|;?[0-9]*H)")
+	ansiControlCodes := regexp.MustCompile("\x1b\\[([0-9]*)([ABCDEFGJK]|;?[0-9]*H)")
 	for {
 		line, err := reader.ReadString('\n')
 		if err == nil || (err == io.EOF && len(line) > 0) {
