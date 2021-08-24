@@ -59,11 +59,11 @@ func Capture(reader MyReader) []string {
 	return terminal.screen
 }
 
-func (terminal *Terminal) HandleLine(re *regexp.Regexp, line string) {
+func (terminal *Terminal) HandleLine(ansiControlCodes *regexp.Regexp, line string) {
 	terminal.x = 0
 	text := line
 	for {
-		indices := re.FindStringSubmatchIndex(text)
+		indices := ansiControlCodes.FindStringSubmatchIndex(text)
 		printable := text
 		if indices != nil && len(indices) > 4 {
 			printable = text[:indices[0]]
