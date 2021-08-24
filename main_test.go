@@ -200,9 +200,6 @@ func TestEraseInDisplayToBeginningEmpty(t *testing.T) {
 	got := lines
 	want := ""
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
 
 func TestEraseInDisplayToEnd(t *testing.T) {
@@ -212,9 +209,6 @@ func TestEraseInDisplayToEnd(t *testing.T) {
 	got := lines
 	want := "Howdy,"
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
 
 func TestEraseInDisplayToBeginning(t *testing.T) {
@@ -224,63 +218,42 @@ func TestEraseInDisplayToBeginning(t *testing.T) {
 	got := lines
 	want := "\n     "
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
 
 func TestLenEmpty(t *testing.T) {
 	got := Len("")
 	want := 0
 	AssertEquals(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-	}
 }
 
 func TestLenString(t *testing.T) {
 	got := Len("Hello, world!")
 	want := 13
 	AssertEquals(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-	}
 }
 
 func TestLenColored(t *testing.T) {
 	got := Len("One \x1b[0m two")
 	want := 8
 	AssertEquals(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-	}
 }
 
 func TestLenUnicode(t *testing.T) {
 	got := Len("↑")
 	want := 1
 	AssertEquals(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-	}
 }
 
 func TestLenColored2(t *testing.T) {
 	got := Len("\x1b[31mOne \x1b[0m two")
 	want := 8
 	AssertEquals(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-	}
 }
 
 func TestLenColoredBug(t *testing.T) {
 	got := Len("\x1b[m  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2")
 	want := 43
 	AssertEquals(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-	}
 }
 
 func TestPosZero(t *testing.T) {
