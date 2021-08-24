@@ -136,7 +136,7 @@ func TestUpDown(t *testing.T) {
 }
 
 func TestLeftRight(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("\x1b[10C world \x1b[14D hello,\n"))
+	lines := Capture(StrReader("\x1b[10C world \x1b[14D hello,\n"))
 
 	got := strings.Join(lines, ":")
 	want := "    hello, world "
