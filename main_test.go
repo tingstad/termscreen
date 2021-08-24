@@ -380,12 +380,6 @@ func TestPosBug(t *testing.T) {
 	AssertEquals(t, 23, Pos(str, 12))
 }
 
-func AssertEquals(t *testing.T, want int, got int) {
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-	}
-}
-
 func TestPosUnicode(t *testing.T) {
 	got := Pos("↑ ", 1)
 	want := 3
@@ -446,4 +440,9 @@ func FixTestPrintStyleBug(t *testing.T) {
 
 func StrReader(str string) MyReader {
 	return bufio.NewReader(strings.NewReader(str))
+}
+func AssertEquals(t *testing.T, want int, got int) {
+	if got != want {
+		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+	}
 }
