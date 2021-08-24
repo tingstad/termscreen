@@ -259,6 +259,9 @@ func Max(x, y int) int {
 }
 
 func Min(nums ...int) int {
+	if len(nums) < 1 {
+		panic("No args!")
+	}
 	x := nums[0]
 	y := nums[1]
 	if x < y {
