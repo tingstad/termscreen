@@ -188,7 +188,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 	}
 }
 
-func UpdateStyle() {
+func UpdateStyle(terminalStyle string, styles []string) {
 }
 
 func Print(screen []string, text string, x int, y int) []string {
