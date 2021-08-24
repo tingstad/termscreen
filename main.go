@@ -213,11 +213,10 @@ func Pos(value string, i int) int {
 	if len(value) == 0 {
 		return 0
 	}
-	re := regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
 	offset := 0
 	columns := 0
 	for {
-		pos := re.FindStringIndex(value)
+		pos := allAnsiCodes.FindStringIndex(value)
 		passed := value
 		if pos != nil {
 			passed = value[0:pos[0]]
