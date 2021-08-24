@@ -273,6 +273,7 @@ func TestLenEmpty(t *testing.T) {
 func TestLenString(t *testing.T) {
 	got := Len("Hello, world!")
 	want := 13
+	AssertEquals(t, want, got)
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
@@ -281,6 +282,7 @@ func TestLenString(t *testing.T) {
 func TestLenColored(t *testing.T) {
 	got := Len("One \x1b[0m two")
 	want := 8
+	AssertEquals(t, want, got)
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
@@ -289,6 +291,7 @@ func TestLenColored(t *testing.T) {
 func TestLenUnicode(t *testing.T) {
 	got := Len("↑")
 	want := 1
+	AssertEquals(t, want, got)
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
