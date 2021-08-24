@@ -331,6 +331,11 @@ func StrReader(str string) MyReader {
 	return bufio.NewReader(strings.NewReader(str))
 }
 
+func AssertTrue(t *testing.T, want bool) {
+	if !want {
+		t.Errorf("Fail")
+	}
+}
 func AssertEquals(t *testing.T, want int, got int) {
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
