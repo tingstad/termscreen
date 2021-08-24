@@ -329,11 +329,6 @@ func TestPosSimple(t *testing.T) {
 func TestPos(t *testing.T) {
 	str := "\x1b[mabc"
 	AssertEquals(t, 4, Pos(str, 1))
-	got := Pos(str, 1)
-	want := 4
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-	}
 }
 
 func TestPosZeroAnsi(t *testing.T) {
