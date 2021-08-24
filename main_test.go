@@ -25,6 +25,7 @@ func TestTwoLines(t *testing.T) {
 func TestNoNewline(t *testing.T) {
 	lines := Capture(StrReader("hello"))
 	got := strings.Join(lines, "")
+
 	AssertEqualsStr(t, "hello", got)
 
 	if got != "hello" {
