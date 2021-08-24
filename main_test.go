@@ -34,6 +34,7 @@ func TestPrint(t *testing.T) {
 	lines := Print(screen, "hello", 0, 0)
 
 	got := strings.Join(lines, "")
+	AssertEqualsStr(t, "hello", got)
 	if got != "hello" {
 		t.Errorf("Want \"hello\", got %s", got)
 	}
