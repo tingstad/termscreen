@@ -12,15 +12,13 @@ func TestOneLine(t *testing.T) {
 
 	got := strings.Join(lines, "")
 	AssertEqualsStr(t, "hello", got)
-	if got != "hello" {
-		t.Errorf("Want \"hello\", got \"%s\"", got)
-	}
 }
 
 func TestTwoLines(t *testing.T) {
 	lines := Capture(StrReader("hello\nworld\n"))
 
 	got := len(lines)
+	AssertEquals(t, 2, got)
 	if got != 2 {
 		t.Errorf("Want 2, got %d", got)
 	}
