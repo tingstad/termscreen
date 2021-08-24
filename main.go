@@ -188,7 +188,7 @@ func UpdateStyle(terminalStyle string, styles []string) string {
 			break
 		}
 	}
-	return terminalStyle + strings.Join(styles, "")
+	return strings.Join(styles, "")
 }
 
 func Print(screen []string, text string, x int, y int) []string {
