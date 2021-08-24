@@ -215,7 +215,7 @@ func TestEraseInLine(t *testing.T) {
 
 func TestEraseInLineEnd(t *testing.T) {
 	str := "Hello, world! \x1b[1;6H\x1b[K\n"
-	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
+	lines := strings.Join(Capture(StrReader(str)), "\n")
 
 	got := lines
 	want := "Hello"
