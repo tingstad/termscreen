@@ -331,7 +331,6 @@ func TestPos(t *testing.T) {
 	AssertEquals(t, 0, Pos(str, 0))
 	AssertEquals(t, 4, Pos(str, 1))
 	AssertEquals(t, 5, Pos(str, 2))
-	AssertEquals(t, 6, Pos(str, 3))
 }
 
 func TestPosZeroAnsi(t *testing.T) {
