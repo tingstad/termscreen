@@ -385,6 +385,7 @@ func TestPrintStyleResetOptimize(t *testing.T) {
 
 	got := lines[1]
 	want := "\x1b[0m bar"
+	AssertEqualsStr(t, want, got)
 	if got != want {
 		t.Errorf("Want \"%s\", got \"%s\"", want, got)
 	}
