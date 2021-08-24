@@ -328,6 +328,7 @@ func TestUpdateStyle(t *testing.T) {
 	AssertTrue(t, ansiResetCode.MatchString("\x1b[0m"))
 	var f = func(expect bool, text string) {
 		if ansiResetCode.MatchString(text) != expect {
+			t.Errorf("Expected '%s' reset code match to be %t", text, expect)
 		}
 	}
 	Use(f)
