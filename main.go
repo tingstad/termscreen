@@ -168,7 +168,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 	terminal.screen = screen
 	terminal.x += Len(text)
 	styles := ansiStyleCodes.FindAllString(text, -1)
-	UpdateStyle(terminal.style, styles)
+	_ = UpdateStyle(terminal.style, styles)
 	if styles != nil {
 		for i := len(styles) - 1; i >= 0; i-- {
 			if styles[i] == "\x1b[0m" || styles[i] == "\x1b[m" {
