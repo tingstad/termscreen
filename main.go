@@ -11,7 +11,7 @@ import (
 	"unicode/utf8"
 )
 
-var allll = regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
+var allAnsiCodes = regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
 
 func main() {
 	lines := CaptureReader(os.Stdin)
