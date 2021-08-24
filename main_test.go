@@ -115,7 +115,7 @@ func TestDown(t *testing.T) {
 }
 
 func TestUp(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\n\x1b[Aansi\n"))
+	lines := Capture(StrReader("hello\n\x1b[Aansi\n"))
 
 	got := strings.Join(lines, "")
 	if got != "ansio" {
