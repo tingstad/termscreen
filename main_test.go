@@ -256,6 +256,7 @@ func TestEraseInDisplayToBeginning(t *testing.T) {
 
 	got := lines
 	want := "\n     "
+	AssertEqualsStr(t, want, got)
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
