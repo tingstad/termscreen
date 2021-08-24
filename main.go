@@ -187,15 +187,15 @@ func Print(screen []string, text string, x int, y int) []string {
 		screen = append(screen, "")
 	}
 	if y < len(screen) {
-		suffix := ""
-		if Len(screen[y]) > x+Len(text) {
-			suffix = screen[y][Pos(screen[y], x+Len(text)):]
-		}
 		prefix := ""
 		if x < Len(screen[y]) {
 			prefix = screen[y][0:Pos(screen[y], x)]
 		} else {
 			prefix = screen[y] + strings.Repeat(" ", x-Len(screen[y]))
+		}
+		suffix := ""
+		if Len(screen[y]) > x+Len(text) {
+			suffix = screen[y][Pos(screen[y], x+Len(text)):]
 		}
 		screen[y] = prefix + text + suffix
 	}
