@@ -329,6 +329,7 @@ func TestPosSimple(t *testing.T) {
 func TestPos(t *testing.T) {
 	str := "\x1b[mabc"
 	AssertEquals(t, 4, Pos(str, 1))
+	AssertEquals(t, 5, Pos(str, 2))
 }
 
 func TestPosZeroAnsi(t *testing.T) {
