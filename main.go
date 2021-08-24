@@ -164,7 +164,6 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 
 func (terminal *Terminal) PrintTerm(text string) {
 	screen := terminal.screen
-	//screen = Print(screen, terminal.style, terminal.x, terminal.y)
 	screen = Print(screen, terminal.style+text, terminal.x, terminal.y)
 	terminal.screen = screen
 	terminal.x += Len(text)
