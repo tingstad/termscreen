@@ -333,14 +333,6 @@ func TestPos(t *testing.T) {
 	AssertEquals(t, 5, Pos(str, 2))
 }
 
-func TestPosZeroAnsi(t *testing.T) {
-	got := Pos("\x1b[mFoo", 0)
-	want := 0
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-	}
-}
-
 func TestPosBug(t *testing.T) {
 	//byte index:           1            2
 	//      0   1234567   890123456789   0123
