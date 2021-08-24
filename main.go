@@ -168,9 +168,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 	terminal.screen = screen
 	terminal.x += Len(text)
 	styles := ansiStyleCodes.FindAllString(terminal.style+text, -1)
-	if styles != nil {
-		terminal.style = UpdateStyle(styles)
-	}
+	terminal.style = UpdateStyle(styles)
 }
 
 func UpdateStyle(styles []string) string {
