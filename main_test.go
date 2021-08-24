@@ -333,7 +333,7 @@ func StrReader(str string) MyReader {
 
 func AssertTrue(t *testing.T, want bool) {
 	if !want {
-		t.Errorf("Fail")
+		t.Errorf("Expected true")
 	}
 }
 
