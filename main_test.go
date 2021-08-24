@@ -318,7 +318,7 @@ func TestUpdateStyle(t *testing.T) {
 	AssertEqualsStr(t, "", UpdateStyle("", []string{""}))
 	AssertEqualsStr(t, "", UpdateStyle("", []string{"", ""}))
 	//AssertEqualsStr(t, "\x1b[33m", UpdateStyle("\x1b[33m", []string{}))
-	AssertEqualsStr(t, "\x1b[33m", UpdateStyle("\x1b[33m", []string{""}))
+	//AssertEqualsStr(t, "\x1b[33m", UpdateStyle("\x1b[33m", []string{""}))
 	AssertEqualsStr(t, "\x1b[33m", UpdateStyle("", []string{"\x1b[33m"}))
 	AssertEqualsStr(t, "\x1b[33m", UpdateStyle("", []string{"", "\x1b[33m"}))
 	AssertEqualsStr(t, "\x1b[m", UpdateStyle("", []string{"\x1b[m"}))
