@@ -443,3 +443,9 @@ func AssertEquals(t *testing.T, want int, got int) {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
 }
+
+func AssertEqualsStr(t *testing.T, want int, got int) {
+	if got != want {
+		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+	}
+}
