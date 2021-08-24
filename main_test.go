@@ -124,7 +124,7 @@ func TestUp(t *testing.T) {
 }
 
 func TestUpDown(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("one \x1b[2B two \x1b[2A three\n"))
+	lines := Capture(StrReader("one \x1b[2B two \x1b[2A three\n"))
 
 	want := `one       three
 
