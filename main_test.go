@@ -325,6 +325,7 @@ func TestPosZero(t *testing.T) {
 func TestPosSimple(t *testing.T) {
 	for _, str := range []string{"foo", "foo\x1b[m"} {
 		AssertEquals(t, 1, Pos(str, 1))
+		AssertEquals(t, 2, Pos(str, 2))
 	}
 }
 
