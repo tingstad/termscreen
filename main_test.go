@@ -111,6 +111,7 @@ func TestLeftRight(t *testing.T) {
 
 	got := strings.Join(lines, ":")
 	want := "    hello, world "
+	AssertEqualsStr(t, want, got)
 	if got != want {
 		t.Errorf("Want:\n\"%s\"\ngot:\n\"%s\"", want, got)
 	}
