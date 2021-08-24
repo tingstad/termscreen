@@ -67,7 +67,7 @@ func TestPrintOverPartly(t *testing.T) {
 	AssertEqualsStr(t, "hello     world", got)
 }
 
-func FixTestPrintBug(t *testing.T) {
+func TestPrintBug(t *testing.T) {
 	screen := []string{"\x1b[m  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2"}
 	lines := Print(screen, ">", 0, 0)
 
