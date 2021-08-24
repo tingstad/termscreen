@@ -227,15 +227,12 @@ func Pos(value string, i int) int {
 			}
 			_, width := utf8.DecodeRuneInString(passed[index:])
 			w = width
-			if columns+runeCount >= i {
+			if columns >= i {
 				return offset + index
 			}
+			columns++
 			runeCount++
 		}
-		if runeCount != utf8.RuneCountInString(passed) {
-			panic("Runecount error")
-		}
-		columns += runeCount
 		offset += len(passed)
 		if columns >= i {
 			return offset
