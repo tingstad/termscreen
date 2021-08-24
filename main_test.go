@@ -27,10 +27,6 @@ func TestNoNewline(t *testing.T) {
 	got := strings.Join(lines, "")
 
 	AssertEqualsStr(t, "hello", got)
-
-	if got != "hello" {
-		t.Errorf("Want \"hello\", got \"%s\"", got)
-	}
 }
 
 func TestPrint(t *testing.T) {
