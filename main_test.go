@@ -213,9 +213,7 @@ func TestLenEmpty(t *testing.T) {
 }
 
 func TestLenString(t *testing.T) {
-	got := Len("Hello, world!")
-	want := 13
-	AssertEquals(t, want, got)
+	AssertEquals(t, 13, Len("Hello, world!"))
 }
 
 func TestLenColored(t *testing.T) {
