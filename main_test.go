@@ -50,6 +50,7 @@ func TestPrintOver(t *testing.T) {
 	lines := Print(screen, "world", 0, 0)
 
 	got := strings.Join(lines, "")
+	AssertEqualsStr(t, "world", got)
 	if got != "world" {
 		t.Errorf("Want \"world\", got %s", got)
 	}
