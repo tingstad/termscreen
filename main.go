@@ -263,19 +263,12 @@ func Min(nums ...int) int {
 		panic("No args!")
 	}
 	smallest := nums[0]
-	Use(smallest)
 	for _, num := range nums {
 		if num < smallest {
 			smallest = num
 		}
 	}
 	return smallest
-	x := nums[0]
-	y := nums[1]
-	if x < y {
-		return x
-	}
-	return y
 }
 
 func Use(vals ...interface{}) {
