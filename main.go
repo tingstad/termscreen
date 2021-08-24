@@ -264,6 +264,11 @@ func Min(nums ...int) int {
 	}
 	smallest := nums[0]
 	Use(smallest)
+	for _, num := range nums {
+		if num < smallest {
+			smallest = num
+		}
+	}
 	x := nums[0]
 	y := nums[1]
 	if x < y {
