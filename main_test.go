@@ -365,6 +365,7 @@ func TestPrintStyleAccumulate(t *testing.T) {
 
 	got := lines[1]
 	want := "\x1b[31m\x1b[1mHello"
+	AssertEqualsStr(t, want, got)
 	if got != want {
 		t.Errorf("Want \"%s\", got \"%s\"", want, got)
 	}
