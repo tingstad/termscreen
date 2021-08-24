@@ -265,6 +265,7 @@ func TestEraseInDisplayToBeginning(t *testing.T) {
 func TestLenEmpty(t *testing.T) {
 	got := Len("")
 	want := 0
+	AssertEquals(t, want, got)
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
 	}
