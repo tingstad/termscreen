@@ -309,7 +309,7 @@ func FixTestPrintStyleBug(t *testing.T) {
 	lines := Capture(StrReader("\x1b[m  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2\n  \x1b[1;1H>"))
 
 	got := lines[0]
-	want := "\x1b[1;32m>\x1b[m * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2"
+	want := "\x1b[1;32m>\x1b[m * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[;m\x1b[1;32musability2"
 	AssertEqualsStr(t, want, got)
 }
 
