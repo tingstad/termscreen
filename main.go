@@ -12,6 +12,7 @@ import (
 )
 
 var allAnsiCodes = regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
+var ansiStyleCodes = regexp.MustCompile("\x1b\\[[0-9;]*m")
 
 func main() {
 	lines := CaptureReader(os.Stdin)
@@ -167,7 +168,6 @@ func (terminal *Terminal) PrintTerm(text string) {
 	screen = Print(screen, terminal.style+text, terminal.x, terminal.y)
 	terminal.screen = screen
 	terminal.x += Len(text)
-	ansiStyleCodes := regexp.MustCompile("\x1b\\[[0-9;]*m")
 	styles := ansiStyleCodes.FindAllString(text, -1)
 	if styles != nil {
 		for i := len(styles) - 1; i >= 0; i-- {
