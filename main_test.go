@@ -171,8 +171,7 @@ func TestEraseInLineEnd(t *testing.T) {
 	lines := strings.Join(Capture(StrReader(str)), "\n")
 
 	got := lines
-	want := "Hello"
-	AssertEqualsStr(t, want, got)
+	AssertEqualsStr(t, "Hello", got)
 }
 
 func TestEraseInDisplay(t *testing.T) {
