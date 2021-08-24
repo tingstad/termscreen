@@ -1,13 +1,14 @@
 package main
 
 import (
+	"bufio"
 	"strconv"
 	"strings"
 	"testing"
 )
 
 func TestOneLine(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\n"))
+	lines := Capture(StrReader("hello\n"))
 
 	got := strings.Join(lines, "")
 	if got != "hello" {
@@ -16,7 +17,7 @@ func TestOneLine(t *testing.T) {
 }
 
 func TestTwoLines(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\nworld\n"))
+	lines := Capture(StrReader("hello\nworld\n"))
 
 	got := len(lines)
 	if got != 2 {
@@ -98,9 +99,9 @@ func FixTestPrintBug(t *testing.T) {
 	lines := Print(screen, ">", 0, 0)
 
 	got := strings.Join(lines, "")
-	want := "\x1b[m>  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2"
+	want := ">\x1b[m * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2"
 	if got != want {
-		t.Errorf("Want \"%s\", got %s", want, got)
+		t.Errorf("\x1b[mWant:\n\"%s\x1b[m\"\n%q\ngot:\n\"%s\x1b[m\"\n%q", want, want, got, got)
 	}
 }
 
@@ -140,7 +141,7 @@ func TestLeftRight(t *testing.T) {
 	got := strings.Join(lines, ":")
 	want := "    hello, world "
 	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
+		t.Errorf("Want:\n\"%s\"\ngot:\n\"%s\"", want, got)
 	}
 }
 
@@ -441,4 +442,8 @@ func FixTestPrintStyleBug(t *testing.T) {
 	if got != want {
 		t.Errorf("Want \"%s\", got \"%s\"", want, got)
 	}
+}
+
+func StrReader(str string) MyReader {
+	return bufio.NewReader(strings.NewReader(str))
 }
