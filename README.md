@@ -4,8 +4,6 @@ Because ANSI escape sequences can move the cursor, there are many ways to draw a
 
 This program captures the output and prints it top to bottom.
 
-(Still in early development; the code is neither complete, battle tested, nor pretty.)
-
 ## Development
 
 I experimented with a strict type of TCR (Test && Commit || Reset) in Vim (see [vimrc](https://github.com/tingstad/capture-screen/blob/main/vimrc)):
