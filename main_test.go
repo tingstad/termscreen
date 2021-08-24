@@ -312,9 +312,6 @@ func TestPrintStyleAccumulate(t *testing.T) {
 	got := lines[1]
 	want := "\x1b[31m\x1b[1mHello"
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want \"%s\", got \"%s\"", want, got)
-	}
 }
 
 func TestPrintStyleReset(t *testing.T) {
@@ -323,9 +320,6 @@ func TestPrintStyleReset(t *testing.T) {
 	got := strings.Join(lines, ":")
 	want := "\x1b[31mRED\x1b[0m:\x1b[0mHello"
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want \"%s\", got \"%s\"", want, got)
-	}
 }
 
 func TestPrintStyleResetOptimize(t *testing.T) {
@@ -334,9 +328,6 @@ func TestPrintStyleResetOptimize(t *testing.T) {
 	got := lines[1]
 	want := "\x1b[0m bar"
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want \"%s\", got \"%s\"", want, got)
-	}
 }
 
 func FixTestPrintStyleBug(t *testing.T) {
@@ -345,9 +336,6 @@ func FixTestPrintStyleBug(t *testing.T) {
 	got := lines[0]
 	want := "\x1b[m>  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2"
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want \"%s\", got \"%s\"", want, got)
-	}
 }
 
 func StrReader(str string) MyReader {
@@ -355,13 +343,7 @@ func StrReader(str string) MyReader {
 }
 
 func AssertEquals(t *testing.T, want int, got int) {
-	if got != want {
-		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-	}
 }
 
 func AssertEqualsStr(t *testing.T, want string, got string) {
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
