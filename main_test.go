@@ -313,6 +313,9 @@ func FixTestPrintStyleBug(t *testing.T) {
 	AssertEqualsStr(t, want, got)
 }
 
+func TestUpdateStyle(t *testing.T) {
+}
+
 func StrReader(str string) MyReader {
 	return bufio.NewReader(strings.NewReader(str))
 }
