@@ -209,9 +209,7 @@ func TestEraseInDisplayToBeginning(t *testing.T) {
 }
 
 func TestLenEmpty(t *testing.T) {
-	got := Len("")
-	want := 0
-	AssertEquals(t, want, got)
+	AssertEquals(t, 0, Len(""))
 }
 
 func TestLenString(t *testing.T) {
