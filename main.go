@@ -174,7 +174,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 
 func UpdateStyle(styles []string) string {
 	for i := len(styles) - 1; i >= 0; i-- {
-		if styles[i] == "\x1b[0m" || styles[i] == "\x1b[m" {
+		if ansiResetCode.MatchString(styles[i]) {
 			styles = styles[i:]
 			break
 		}
