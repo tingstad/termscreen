@@ -228,7 +228,7 @@ func Pos(value string, i int) int {
 			}
 			columns++
 		}
-		offset += len(passed)
+		offset += lenPassed
 		if columns >= i {
 			return offset
 		}
