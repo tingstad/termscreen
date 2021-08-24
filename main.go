@@ -220,7 +220,8 @@ func Pos(value string, i int) int {
 		if pos != nil {
 			passed = value[0:pos[0]]
 		}
-		for index, w := 0, 0; index < len(passed); index += w {
+		lenPassed := len(passed)
+		for index, w := 0, 0; index < lenPassed; index += w {
 			_, w = utf8.DecodeRuneInString(passed[index:])
 			if columns >= i {
 				return offset + index
