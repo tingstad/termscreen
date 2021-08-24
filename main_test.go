@@ -143,6 +143,7 @@ func TestCursorPosition2(t *testing.T) {
  o
  o
  o`
+	AssertEqualsStr(t, want, got)
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
