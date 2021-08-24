@@ -343,7 +343,13 @@ func StrReader(str string) MyReader {
 }
 
 func AssertEquals(t *testing.T, want int, got int) {
+	if got != want {
+		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
+	}
 }
 
 func AssertEqualsStr(t *testing.T, want string, got string) {
+	if got != want {
+		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
+	}
 }
