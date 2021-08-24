@@ -269,6 +269,7 @@ func Min(nums ...int) int {
 			smallest = num
 		}
 	}
+	return smallest
 	x := nums[0]
 	y := nums[1]
 	if x < y {
