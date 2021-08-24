@@ -170,6 +170,7 @@ func TestEraseInLineAll(t *testing.T) {
 
 		got := strings.ReplaceAll(lines, " ", "")
 		want := ""
+		AssertEqualsStr(t, want, got)
 		if got != want {
 			t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 		}
