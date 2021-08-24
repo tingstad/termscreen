@@ -182,7 +182,7 @@ func Print(screen []string, text string, x int, y int) []string {
 		if x < lineLen {
 			prefix = screen[y][0:Pos(screen[y], x)]
 		} else {
-			prefix = screen[y] + strings.Repeat(" ", x-Len(screen[y]))
+			prefix = screen[y] + strings.Repeat(" ", x-lineLen)
 		}
 		suffix := ""
 		if Len(screen[y]) > x+Len(text) {
