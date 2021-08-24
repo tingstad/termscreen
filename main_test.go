@@ -345,6 +345,7 @@ func TestResetCode(t *testing.T) {
 	assertResetCode(false, "[0m")
 	assertResetCode(false, "\x1b[1m")
 	assertResetCode(false, "\x1b[1;3m")
+	assertResetCode(false, "\x1b[0;1m")
 }
 
 func StrReader(str string) MyReader {
