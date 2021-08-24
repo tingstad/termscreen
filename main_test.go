@@ -196,6 +196,7 @@ func TestEraseInLineEnd(t *testing.T) {
 
 	got := lines
 	want := "Hello"
+	AssertEqualsStr(t, want, got)
 	if got != want {
 		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
 	}
