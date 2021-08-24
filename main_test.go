@@ -17,8 +17,7 @@ func TestOneLine(t *testing.T) {
 func TestTwoLines(t *testing.T) {
 	lines := Capture(StrReader("hello\nworld\n"))
 
-	got := len(lines)
-	AssertEquals(t, 2, got)
+	AssertEquals(t, 2, len(lines))
 	AssertEqualsStr(t, "hello", lines[0])
 	AssertEqualsStr(t, "world", lines[1])
 }
