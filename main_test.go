@@ -333,7 +333,7 @@ func TestPos(t *testing.T) {
 	AssertEquals(t, 5, Pos(str, 2))
 }
 
-func TestPosBug(t *testing.T) {
+func TestPosComplex(t *testing.T) {
 	//byte index:           1            2
 	//      0   1234567   890123456789   0123
 	str := "\x1b[m  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2"
