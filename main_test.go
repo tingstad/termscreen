@@ -106,7 +106,7 @@ func FixTestPrintBug(t *testing.T) {
 }
 
 func TestDown(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello\x1b[Bhi\n"))
+	lines := Capture(StrReader("hello\x1b[Bhi\n"))
 
 	got := strings.Join(lines, ",")
 	if got != "hello,     hi" {
