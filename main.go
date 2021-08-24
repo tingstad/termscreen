@@ -190,6 +190,20 @@ func (terminal *Terminal) PrintTerm(text string) {
 }
 
 func UpdateStyle(terminalStyle string, styles []string) string {
+	for i := len(styles) - 1; i >= 0; i-- {
+		if styles[i] == "\x1b[0m" || styles[i] == "\x1b[m" {
+			if len(terminalStyle) > 2 && (terminalStyle[len(terminalStyle)-3:] == "[0m" || terminalStyle[len(terminalStyle)-2:] == "[m") {
+				if i < len(styles)-1 {
+					styles = styles[i+1:]
+				} else {
+					styles = styles[:0]
+				}
+			} else {
+				styles = styles[i:]
+			}
+			break
+		}
+	}
 	return ""
 }
 
