@@ -59,14 +59,8 @@ func TestPrintOverPartly(t *testing.T) {
 
 	got := strings.Join(lines, "")
 	AssertEqualsStr(t, "hellworld", got)
-	if got != "hellworld" {
-		t.Errorf("Want \"hellworld\", got %s", got)
-	}
 	got = Print(lines, "hi, ", 0, 0)[0]
 	AssertEqualsStr(t, "hi, world", got)
-	if got != "hi, world" {
-		t.Errorf("Want \"hi, world\", got %s", got)
-	}
 	got = Print([]string{"hello world"}, "owdy ", 1, 0)[0]
 	AssertEqualsStr(t, "howdy world", got)
 	if got != "howdy world" {
