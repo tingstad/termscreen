@@ -220,7 +220,6 @@ func Pos(value string, i int) int {
 		if pos != nil {
 			passed = value[0:pos[0]]
 		}
-		runeCount := 0
 		for index, w := 0, 0; index < len(passed); index += w {
 			if len(passed) == 0 {
 				panic("Loop error")
@@ -231,7 +230,6 @@ func Pos(value string, i int) int {
 				return offset + index
 			}
 			columns++
-			runeCount++
 		}
 		offset += len(passed)
 		if columns >= i {
