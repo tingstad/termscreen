@@ -375,6 +375,7 @@ func TestPrintStyleReset(t *testing.T) {
 
 	got := strings.Join(lines, ":")
 	want := "\x1b[31mRED\x1b[0m:\x1b[0mHello"
+	AssertEqualsStr(t, want, got)
 	if got != want {
 		t.Errorf("Want \"%s\", got \"%s\"", want, got)
 	}
