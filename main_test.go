@@ -229,9 +229,7 @@ func TestLenUnicode(t *testing.T) {
 }
 
 func TestLenColored2(t *testing.T) {
-	got := Len("\x1b[31mOne \x1b[0m two")
-	want := 8
-	AssertEquals(t, want, got)
+	AssertEquals(t, 8, Len("\x1b[31mOne \x1b[0m two"))
 }
 
 func TestLenColoredBug(t *testing.T) {
