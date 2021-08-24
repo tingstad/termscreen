@@ -327,6 +327,8 @@ func TestUpdateStyle(t *testing.T) {
 	AssertEquals(t, 2, len(ansiStyleCodes.FindAllString("\x1b[m\x1b[m", -1)))
 	AssertTrue(t, ansiResetCode.MatchString("\x1b[0m"))
 	var f = func(expect bool, text string) {
+		if ansiResetCode.MatchString(text) != expect {
+		}
 	}
 	Use(f)
 }
