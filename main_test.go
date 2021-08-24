@@ -65,9 +65,6 @@ func TestPrintOverPartly(t *testing.T) {
 	AssertEqualsStr(t, "howdy world", got)
 	got = Print([]string{"hello"}, "world", 10, 0)[0]
 	AssertEqualsStr(t, "hello     world", got)
-	if got != "hello     world" {
-		t.Errorf("Want \"hello     world\", got %s", got)
-	}
 }
 
 func FixTestPrintBug(t *testing.T) {
