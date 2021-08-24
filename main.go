@@ -173,6 +173,7 @@ func (terminal *Terminal) PrintTerm(text string) {
 }
 
 func Print(screen []string, text string, x int, y int) []string {
+	fmt.Printf("DEBUG Print text %q %+v\n", text, x)
 	for y >= len(screen) {
 		screen = append(screen, "")
 	}
