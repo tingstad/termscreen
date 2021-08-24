@@ -262,6 +262,8 @@ func Min(nums ...int) int {
 	if len(nums) < 1 {
 		panic("No args!")
 	}
+	smallest := nums[0]
+	Use(smallest)
 	x := nums[0]
 	y := nums[1]
 	if x < y {
