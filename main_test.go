@@ -90,9 +90,6 @@ func TestUp(t *testing.T) {
 
 	got := strings.Join(lines, "")
 	AssertEqualsStr(t, "ansio", got)
-	if got != "ansio" {
-		t.Errorf("Want \"ansio\", got \"%s\"", got)
-	}
 }
 
 func TestUpDown(t *testing.T) {
