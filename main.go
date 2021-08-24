@@ -41,14 +41,14 @@ type Terminal struct {
 func Capture(reader MyReader) []string {
 	terminal := &Terminal{screen: make([]string, 0), x: 0, y: 0, style: ""}
 	esc := "\x1b"
-	re := regexp.MustCompile(esc + "\\[([0-9]*)([ABCDEFGJK]|;?[0-9]*H)")
+	ansiControlCodes := regexp.MustCompile(esc + "\\[([0-9]*)([ABCDEFGJK]|;?[0-9]*H)")
 	for {
 		line, err := reader.ReadString('\n')
 		if err == nil || (err == io.EOF && len(line) > 0) {
 			if len(line) > 0 && line[len(line)-1:] == "\n" {
 				line = line[:len(line)-1]
 			}
-			terminal.HandleLine(re, line)
+			terminal.HandleLine(ansiControlCodes, line)
 		}
 		if err != nil && err != io.EOF {
 			panic(fmt.Sprintf("Error %s", err))
