@@ -221,9 +221,7 @@ func TestLenColored(t *testing.T) {
 }
 
 func TestLenUnicode(t *testing.T) {
-	got := Len("↑")
-	want := 1
-	AssertEquals(t, want, got)
+	AssertEquals(t, 1, Len("↑"))
 }
 
 func TestLenColored2(t *testing.T) {
