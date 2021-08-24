@@ -51,10 +51,6 @@ func TestPrintOver(t *testing.T) {
 
 	got := strings.Join(lines, "")
 	AssertEqualsStr(t, "world", got)
-	AssertEqualsStr(t, "world", got)
-	if got != "world" {
-		t.Errorf("Want \"world\", got %s", got)
-	}
 }
 
 func TestPrintOverPartly(t *testing.T) {
