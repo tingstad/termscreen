@@ -325,8 +325,7 @@ func TestPrintStyleReset(t *testing.T) {
 func TestPrintStyleResetOptimize(t *testing.T) {
 	lines := Capture(StrReader("Foo \x1b[31m\x1b[0m \n bar"))
 
-	got := lines[1]
-	AssertEqualsStr(t, "\x1b[0m bar", got)
+	AssertEqualsStr(t, "\x1b[0m bar", lines[1])
 }
 
 func FixTestPrintStyleBug(t *testing.T) {
