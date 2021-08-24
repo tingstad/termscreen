@@ -259,7 +259,7 @@ func TestEraseInDisplayToBeginningEmpty(t *testing.T) {
 
 func TestEraseInDisplayToEnd(t *testing.T) {
 	str := "Howdy, earth\nHello, world \x1b[7D\x1b[A\x1b[0J\n"
-	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
+	lines := strings.Join(Capture(StrReader(str)), "\n")
 
 	got := lines
 	want := "Howdy,"
@@ -270,7 +270,7 @@ func TestEraseInDisplayToEnd(t *testing.T) {
 
 func TestEraseInDisplayToBeginning(t *testing.T) {
 	str := "Hello,\nworld\x1b[1J\n"
-	lines := strings.Join(CaptureReader(strings.NewReader(str)), "\n")
+	lines := strings.Join(Capture(StrReader(str)), "\n")
 
 	got := lines
 	want := "\n     "
@@ -395,7 +395,7 @@ func TestPosUnicode(t *testing.T) {
 }
 
 func TestPrintStyle(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("\x1b[31mRED\nHello"))
+	lines := Capture(StrReader("\x1b[31mRED\nHello"))
 
 	got := strings.Join(lines, ":")
 	want := "\x1b[31mRED:\x1b[31mHello"
@@ -405,7 +405,7 @@ func TestPrintStyle(t *testing.T) {
 }
 
 func TestPrintStyleAccumulate(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("\x1b[31mRE\x1b[1mD\nHello"))
+	lines := Capture(StrReader("\x1b[31mRE\x1b[1mD\nHello"))
 
 	got := lines[1]
 	want := "\x1b[31m\x1b[1mHello"
@@ -415,7 +415,7 @@ func TestPrintStyleAccumulate(t *testing.T) {
 }
 
 func TestPrintStyleReset(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("\x1b[31mRED\x1b[0m\nHello"))
+	lines := Capture(StrReader("\x1b[31mRED\x1b[0m\nHello"))
 
 	got := strings.Join(lines, ":")
 	want := "\x1b[31mRED\x1b[0m:\x1b[0mHello"
@@ -425,7 +425,7 @@ func TestPrintStyleReset(t *testing.T) {
 }
 
 func TestPrintStyleResetOptimize(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("Foo \x1b[31m\x1b[0m \n bar"))
+	lines := Capture(StrReader("Foo \x1b[31m\x1b[0m \n bar"))
 
 	got := lines[1]
 	want := "\x1b[0m bar"
@@ -435,7 +435,7 @@ func TestPrintStyleResetOptimize(t *testing.T) {
 }
 
 func FixTestPrintStyleBug(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("\x1b[m  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2\n  \x1b[1;1H>"))
+	lines := Capture(StrReader("\x1b[m  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2\n  \x1b[1;1H>"))
 
 	got := lines[0]
 	want := "\x1b[m>  * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[m\x1b[1;32musability2"
