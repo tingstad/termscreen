@@ -327,7 +327,8 @@ func TestPosSimple(t *testing.T) {
 }
 
 func TestPos(t *testing.T) {
-	got := Pos("\x1b[mabc", 1)
+	str := "\x1b[mabc"
+	got := Pos(str, 1)
 	want := 4
 	if got != want {
 		t.Errorf("Want:\n%d\ngot:\n%d", want, got)
