@@ -19,6 +19,7 @@ func TestTwoLines(t *testing.T) {
 
 	got := len(lines)
 	AssertEquals(t, 2, got)
+	AssertEqualsStr(t, "hello", lines[0])
 	one := lines[0]
 	if one != "hello" {
 		t.Errorf("Want \"hello\", got %s", one)
