@@ -34,7 +34,7 @@ func TestTwoLines(t *testing.T) {
 }
 
 func TestNoNewline(t *testing.T) {
-	lines := CaptureReader(strings.NewReader("hello"))
+	lines := Capture(StrReader("hello"))
 
 	got := strings.Join(lines, "")
 	if got != "hello" {
