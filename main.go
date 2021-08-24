@@ -13,7 +13,7 @@ import (
 
 var allAnsiCodes = regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
 var ansiStyleCodes = regexp.MustCompile("\x1b\\[[0-9;]*m")
-var ansiResetCode = regexp.MustCompile("\x1b\\[[0-9;]*m")
+var ansiResetCode = regexp.MustCompile("\x1b\\[([0-9;][0;])*[0;]*m")
 
 func main() {
 	lines := CaptureReader(os.Stdin)
