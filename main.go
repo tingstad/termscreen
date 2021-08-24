@@ -206,7 +206,7 @@ func Print(screen []string, text string, x int, y int) []string {
 	return screen
 }
 
-// Returns byte index of letter #i in string (incl. leading style code):
+// Returns byte index of letter #i (0-based) in string (incl. leading style code):
 func Pos(value string, i int) int {
 	if len(value) == 0 {
 		return 0
