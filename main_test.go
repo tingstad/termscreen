@@ -83,9 +83,6 @@ func TestDown(t *testing.T) {
 
 	got := strings.Join(lines, ",")
 	AssertEqualsStr(t, "hello,     hi", got)
-	if got != "hello,     hi" {
-		t.Errorf("Want \"hello,     hi\", got \"%s\"", got)
-	}
 }
 
 func TestUp(t *testing.T) {
