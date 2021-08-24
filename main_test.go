@@ -315,12 +315,6 @@ func TestLenColoredBug(t *testing.T) {
 func TestPosZero(t *testing.T) {
 	for _, str := range []string{"", "foo"} {
 		AssertEquals(t, 0, Pos(str, 0))
-
-		got := Pos(str, 0)
-		want := 0
-		if got != want {
-			t.Errorf("Want:\n%d\ngot:\n%d", want, got)
-		}
 	}
 }
 
