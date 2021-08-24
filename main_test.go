@@ -21,14 +21,6 @@ func TestTwoLines(t *testing.T) {
 	AssertEquals(t, 2, got)
 	AssertEqualsStr(t, "hello", lines[0])
 	AssertEqualsStr(t, "world", lines[1])
-	one := lines[0]
-	if one != "hello" {
-		t.Errorf("Want \"hello\", got %s", one)
-	}
-	two := lines[1]
-	if two != "world" {
-		t.Errorf("Want \"world\", got %s", two)
-	}
 }
 
 func TestNoNewline(t *testing.T) {
