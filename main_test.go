@@ -51,6 +51,7 @@ func TestPrintOver(t *testing.T) {
 
 	got := strings.Join(lines, "")
 	AssertEqualsStr(t, "world", got)
+	AssertEqualsStr(t, "world", got)
 	if got != "world" {
 		t.Errorf("Want \"world\", got %s", got)
 	}
@@ -61,18 +62,22 @@ func TestPrintOverPartly(t *testing.T) {
 	lines := Print(screen, "world", 4, 0)
 
 	got := strings.Join(lines, "")
+	AssertEqualsStr(t, "hellworld", got)
 	if got != "hellworld" {
 		t.Errorf("Want \"hellworld\", got %s", got)
 	}
 	got = Print(lines, "hi, ", 0, 0)[0]
+	AssertEqualsStr(t, "hi, world", got)
 	if got != "hi, world" {
 		t.Errorf("Want \"hi, world\", got %s", got)
 	}
 	got = Print([]string{"hello world"}, "owdy ", 1, 0)[0]
+	AssertEqualsStr(t, "howdy world", got)
 	if got != "howdy world" {
 		t.Errorf("Want \"howdy world\", got %s", got)
 	}
 	got = Print([]string{"hello"}, "world", 10, 0)[0]
+	AssertEqualsStr(t, "hello     world", got)
 	if got != "hello     world" {
 		t.Errorf("Want \"hello     world\", got %s", got)
 	}
@@ -93,6 +98,7 @@ func TestDown(t *testing.T) {
 	lines := Capture(StrReader("hello\x1b[Bhi\n"))
 
 	got := strings.Join(lines, ",")
+	AssertEqualsStr(t, "hello,     hi", got)
 	if got != "hello,     hi" {
 		t.Errorf("Want \"hello,     hi\", got \"%s\"", got)
 	}
@@ -102,6 +108,7 @@ func TestUp(t *testing.T) {
 	lines := Capture(StrReader("hello\n\x1b[Aansi\n"))
 
 	got := strings.Join(lines, "")
+	AssertEqualsStr(t, "ansio", got)
 	if got != "ansio" {
 		t.Errorf("Want \"ansio\", got \"%s\"", got)
 	}
