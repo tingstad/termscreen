@@ -169,11 +169,11 @@ func (terminal *Terminal) PrintTerm(text string) {
 	terminal.x += Len(text)
 	styles := ansiStyleCodes.FindAllString(terminal.style+text, -1)
 	if styles != nil {
-		terminal.style = UpdateStyle("", styles)
+		terminal.style = UpdateStyle(styles)
 	}
 }
 
-func UpdateStyle(_legacy string, styles []string) string {
+func UpdateStyle(styles []string) string {
 	for i := len(styles) - 1; i >= 0; i-- {
 		if styles[i] == "\x1b[0m" || styles[i] == "\x1b[m" {
 			styles = styles[i:]
