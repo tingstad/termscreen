@@ -258,7 +258,9 @@ func Max(x, y int) int {
 	return x
 }
 
-func Min(x, y int) int {
+func Min(nums ...int) int {
+	x := nums[0]
+	y := nums[1]
 	if x < y {
 		return x
 	}
