@@ -98,9 +98,6 @@ func TestUpDown(t *testing.T) {
      two `
 	got := strings.Join(lines, "\n")
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
 
 func TestLeftRight(t *testing.T) {
@@ -109,9 +106,6 @@ func TestLeftRight(t *testing.T) {
 	got := strings.Join(lines, ":")
 	want := "    hello, world "
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n\"%s\"\ngot:\n\"%s\"", want, got)
-	}
 }
 
 func TestCursorPosition(t *testing.T) {
@@ -121,9 +115,6 @@ func TestCursorPosition(t *testing.T) {
 		got := strings.Join(lines, ":")
 		want := "one"
 		AssertEqualsStr(t, want, got)
-		if got != want {
-			t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-		}
 	}
 }
 
@@ -141,9 +132,6 @@ func TestCursorPosition2(t *testing.T) {
  o
  o`
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
 
 func TestCursorPositionAndPrint(t *testing.T) {
@@ -156,9 +144,6 @@ func TestCursorPositionAndPrint(t *testing.T) {
  o z
  o`
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
 
 func TestEraseInLineAll(t *testing.T) {
@@ -168,9 +153,6 @@ func TestEraseInLineAll(t *testing.T) {
 		got := strings.ReplaceAll(lines, " ", "")
 		want := ""
 		AssertEqualsStr(t, want, got)
-		if got != want {
-			t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-		}
 	}
 }
 
@@ -182,9 +164,6 @@ func TestEraseInLine(t *testing.T) {
 	//nt := "Hello,  world!"
 	want := "        world!"
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
 
 func TestEraseInLineEnd(t *testing.T) {
@@ -194,9 +173,6 @@ func TestEraseInLineEnd(t *testing.T) {
 	got := lines
 	want := "Hello"
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
 
 func TestEraseInDisplay(t *testing.T) {
@@ -206,9 +182,6 @@ func TestEraseInDisplay(t *testing.T) {
 	got := lines
 	want := ""
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
 
 func TestEraseInDisplayToEndEmpty(t *testing.T) {
@@ -218,9 +191,6 @@ func TestEraseInDisplayToEndEmpty(t *testing.T) {
 	got := lines
 	want := ""
 	AssertEqualsStr(t, want, got)
-	if got != want {
-		t.Errorf("Want:\n%s\ngot:\n%s", want, got)
-	}
 }
 
 func TestEraseInDisplayToBeginningEmpty(t *testing.T) {
