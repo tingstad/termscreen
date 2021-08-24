@@ -221,9 +221,6 @@ func Pos(value string, i int) int {
 			passed = value[0:pos[0]]
 		}
 		for index, w := 0, 0; index < len(passed); index += w {
-			if len(passed) == 0 {
-				panic("Loop error")
-			}
 			_, width := utf8.DecodeRuneInString(passed[index:])
 			w = width
 			if columns >= i {
