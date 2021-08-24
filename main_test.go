@@ -324,6 +324,7 @@ func TestUpdateStyle(t *testing.T) {
 	AssertEqualsStr(t, "\x1b[0m", UpdateStyle([]string{"\x1b[33m", "\x1b[0m"}))
 	AssertEquals(t, 0, len(ansiStyleCodes.FindAllString("", -1)))
 	AssertEquals(t, 1, len(ansiStyleCodes.FindAllString("\x1b[0m", -1)))
+	AssertEquals(t, 2, len(ansiStyleCodes.FindAllString("\x1b[m\x1b[m", -1)))
 }
 
 func StrReader(str string) MyReader {
