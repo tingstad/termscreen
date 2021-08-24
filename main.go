@@ -185,7 +185,7 @@ func Print(screen []string, text string, x int, y int) []string {
 			prefix = screen[y] + strings.Repeat(" ", x-lineLen)
 		}
 		suffix := ""
-		if Len(screen[y]) > x+Len(text) {
+		if lineLen > x+Len(text) {
 			idx := Pos(screen[y], x+Len(text))
 			styles := UpdateStyle(ansiStyleCodes.FindAllString(screen[y][:idx], -1))
 			idx2 := Pos(screen[y], x+Len(text))
