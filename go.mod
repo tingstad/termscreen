@@ -1,3 +1,3 @@
-module tingstad.github.com/capture
+module github.com/tingstad/termscreen
 
 go 1.20
