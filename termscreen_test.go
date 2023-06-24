@@ -2,10 +2,20 @@ package termscreen
 
 import (
 	"bufio"
+	"fmt"
 	"strconv"
 	"strings"
 	"testing"
 )
+
+func ExampleCapture() {
+	fmt.Println(strings.Join(
+		Capture(strings.NewReader("hello, earth!\x1b[7D world")),
+		"\n"))
+
+	// Output:
+	// hello, world!
+}
 
 func TestOneLine(t *testing.T) {
 	lines := captureStringReader(strReader("hello\n"))
