@@ -14,25 +14,31 @@ var allAnsiCodes = regexp.MustCompile("\x1b\\[[0-9;]*[A-Za-z]")
 var ansiStyleCodes = regexp.MustCompile("\x1b\\[[0-9;]*m")
 var ansiResetCode = regexp.MustCompile("\x1b\\[([0-9;]*;[0;]*)?[0;]*m")
 
-type MyReader interface {
+type stringReader interface {
+	// ReadString reads until the first occurrence of delim in the input,
+	// returning a string containing the data up to and including the delimiter.
+	// If ReadString encounters an error before finding a delimiter,
+	// it returns the data read before the error and the error itself (often io.EOF).
+	// ReadString returns err != nil if and only if the returned data does not end
+	// in delim.
 	ReadString(delim byte) (string, error)
 }
 
-func CaptureReader(reader io.Reader) []string {
+func Capture(reader io.Reader) []string {
 	var bufioReader *bufio.Reader = bufio.NewReader(reader)
-	var myReader MyReader = bufioReader
-	lines := Capture(myReader)
+	var myReader stringReader = bufioReader
+	lines := captureStringReader(myReader)
 	return lines
 }
 
-type Terminal struct {
+type terminal struct {
 	screen []string
 	x, y   int
 	style  string
 }
 
-func Capture(reader MyReader) []string {
-	terminal := &Terminal{screen: make([]string, 0), x: 0, y: 0, style: ""}
+func captureStringReader(reader stringReader) []string {
+	terminal := &terminal{screen: make([]string, 0), x: 0, y: 0, style: ""}
 	ansiControlCodes := regexp.MustCompile("\x1b\\[([0-9]*)([ABCDEFGJK]|;?[0-9]*H)")
 	for {
 		line, err := reader.ReadString('\n')
@@ -40,7 +46,7 @@ func Capture(reader MyReader) []string {
 			if len(line) > 0 && line[len(line)-1:] == "\n" {
 				line = line[:len(line)-1]
 			}
-			terminal.HandleLine(ansiControlCodes, line)
+			terminal.handleLine(ansiControlCodes, line)
 		}
 		if err != nil && err != io.EOF {
 			panic(fmt.Sprintf("Error %s", err))
@@ -52,7 +58,7 @@ func Capture(reader MyReader) []string {
 	return terminal.screen
 }
 
-func (terminal *Terminal) HandleLine(ansiControlCodes *regexp.Regexp, line string) {
+func (terminal *terminal) handleLine(ansiControlCodes *regexp.Regexp, line string) {
 	terminal.x = 0
 	text := line
 	for {
@@ -61,7 +67,7 @@ func (terminal *Terminal) HandleLine(ansiControlCodes *regexp.Regexp, line strin
 		if indices != nil && len(indices) > 4 {
 			printable = text[:indices[0]]
 		}
-		terminal.PrintTerm(printable)
+		terminal.printTerm(printable)
 		if indices != nil && len(indices) > 4 {
 			countStart := indices[2]
 			countEnd := indices[3]
@@ -71,9 +77,9 @@ func (terminal *Terminal) HandleLine(ansiControlCodes *regexp.Regexp, line strin
 			code := codes[:1]
 			count := 1
 			if countEnd > countStart {
-				count = Number(text[countStart:countEnd])
+				count = number(text[countStart:countEnd])
 			}
-			terminal.HandleCode(countStart, countEnd, codeStart, codeEnd, count, codes, code)
+			terminal.handleCode(countStart, countEnd, codeStart, codeEnd, count, codes, code)
 			if len(text) > indices[1] {
 				text = text[indices[1]:]
 			} else {
@@ -86,18 +92,18 @@ func (terminal *Terminal) HandleLine(ansiControlCodes *regexp.Regexp, line strin
 	terminal.y += 1
 }
 
-func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, count int, codes, code string) {
+func (terminal *terminal) handleCode(countStart, countEnd, codeStart, codeEnd, count int, codes, code string) {
 	screen := terminal.screen
 	x, y := terminal.x, terminal.y
 	switch code {
 	case "A": // Up
-		y = Max(0, y-count)
+		y = max(0, y-count)
 	case "B": // Down
 		y += count
 	case "C": // Forward
 		x += count
 	case "D": // Back
-		x = Max(0, x-count)
+		x = max(0, x-count)
 	case "E": // Next line
 		y += count
 		x = 0
@@ -108,12 +114,12 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 		if countEnd == countStart {
 			x = 1
 		} else {
-			x = Max(0, count-1)
+			x = max(0, count-1)
 		}
 	case "J": // Erase in Display
-		idx := Pos(screen[y], x)
+		idx := pos(screen[y], x)
 		if count == 0 || countEnd == countStart { // To end
-			if Len(screen[y]) > x {
+			if length(screen[y]) > x {
 				screen[y] = screen[y][0:idx]
 			}
 			screen = screen[0 : y+1]
@@ -128,7 +134,7 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 			y = 0
 		}
 	case "K": // Erase in Line
-		idx := Pos(screen[y], x)
+		idx := pos(screen[y], x)
 		if count == 0 || countEnd == countStart { // To end
 			screen[y] = screen[y][0:idx]
 		} else if count == 1 { // To beginning
@@ -138,12 +144,12 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 		}
 	default:
 		if codes[len(codes)-1:] == "H" { // Position
-			y = Max(0, count-1)
+			y = max(0, count-1)
 			if codes[0:1] == ";" {
 				codes = codes[1:]
 			}
 			if len(codes) > 1 {
-				x = Max(0, Number(codes[0:len(codes)-1])-1)
+				x = max(0, number(codes[0:len(codes)-1])-1)
 			} else {
 				x = 0
 			}
@@ -154,39 +160,39 @@ func (terminal *Terminal) HandleCode(countStart, countEnd, codeStart, codeEnd, c
 	terminal.screen = screen
 }
 
-func (terminal *Terminal) PrintTerm(text string) {
+func (terminal *terminal) printTerm(text string) {
 	screen := terminal.screen
-	screen = Print(screen, terminal.style+text, terminal.x, terminal.y)
+	screen = print(screen, terminal.style+text, terminal.x, terminal.y)
 	terminal.screen = screen
-	terminal.x += Len(text)
+	terminal.x += length(text)
 	styles := ansiStyleCodes.FindAllString(terminal.style+text, -1)
-	terminal.style = UpdateStyle(styles)
+	terminal.style = updateStyle(styles)
 }
 
-func Print(screen []string, text string, x int, y int) []string {
+func print(screen []string, text string, x int, y int) []string {
 	for y >= len(screen) {
 		screen = append(screen, "")
 	}
 	if y < len(screen) {
 		prefix := ""
-		lineLen := Len(screen[y])
+		lineLen := length(screen[y])
 		if x < lineLen {
-			prefix = screen[y][0:Pos(screen[y], x)]
+			prefix = screen[y][0:pos(screen[y], x)]
 		} else {
 			prefix = screen[y] + strings.Repeat(" ", x-lineLen)
 		}
 		suffix := ""
-		if lineLen > x+Len(text) {
-			idx := Pos(screen[y], Max(0, Min(x+1, lineLen-1)))
-			styles := UpdateStyle(ansiStyleCodes.FindAllString(screen[y][:idx], -1))
-			suffix = styles + screen[y][Pos(screen[y], x+Len(text)):]
+		if lineLen > x+length(text) {
+			idx := pos(screen[y], max(0, min(x+1, lineLen-1)))
+			styles := updateStyle(ansiStyleCodes.FindAllString(screen[y][:idx], -1))
+			suffix = styles + screen[y][pos(screen[y], x+length(text)):]
 		}
 		screen[y] = prefix + text + suffix
 	}
 	return screen
 }
 
-func UpdateStyle(styles []string) string {
+func updateStyle(styles []string) string {
 	for i := len(styles) - 1; i >= 0; i-- {
 		if ansiResetCode.MatchString(styles[i]) {
 			styles = styles[i:]
@@ -196,8 +202,8 @@ func UpdateStyle(styles []string) string {
 	return strings.Join(styles, "")
 }
 
-// Returns byte index of letter #i (0-based) in string (incl. leading style code):
-func Pos(value string, i int) int {
+// pos returns byte index of letter #i (0-based) in string (incl. leading style code):
+func pos(value string, i int) int {
 	if len(value) == 0 {
 		return 0
 	}
@@ -228,12 +234,12 @@ func Pos(value string, i int) int {
 	}
 }
 
-func Len(value string) int {
+func length(value string) int {
 	stripped := string(allAnsiCodes.ReplaceAll([]byte(value), []byte("")))
 	return utf8.RuneCountInString(stripped)
 }
 
-func Number(value string) int {
+func number(value string) int {
 	num, err := strconv.Atoi(value)
 	if err != nil {
 		panic(fmt.Sprintf("Error converting \"%s\" to int; %s", value, err))
@@ -241,14 +247,14 @@ func Number(value string) int {
 	return num
 }
 
-func Max(x, y int) int {
+func max(x, y int) int {
 	if x < y {
 		return y
 	}
 	return x
 }
 
-func Min(nums ...int) int {
+func min(nums ...int) int {
 	if len(nums) < 1 {
 		panic("No args!")
 	}
@@ -261,7 +267,7 @@ func Min(nums ...int) int {
 	return smallest
 }
 
-func Use(vals ...interface{}) {
+func use(vals ...interface{}) {
 	for _, val := range vals {
 		_ = val
 	}

@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	lines := termscreen.CaptureReader(os.Stdin)
+	lines := termscreen.Capture(os.Stdin)
 	for _, line := range lines {
 		fmt.Printf("%s\n", line)
 	}
