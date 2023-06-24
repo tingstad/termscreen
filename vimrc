@@ -1,4 +1,4 @@
-" I experimented with a strict type of TCR (Test && Commit || Reset) in Vim (see [vimrc](https://github.com/tingstad/capture-screen/blob/main/vimrc)):
+" I experimented with a strict type of TCR (Test && Commit || Reset) in Vim
 "
 " vim -c 'source vimrc' -O termscreen.go termscreen_test.go
 "
