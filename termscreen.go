@@ -31,11 +31,23 @@ type stringReader interface {
 	ReadString(delim byte) (string, error)
 }
 
-func Capture(reader io.Reader) []string {
+// Capture reads ANSI escape codes and normalizes the printed text
+func Capture(reader io.Reader, opts ...option) []string {
 	var bufioReader *bufio.Reader = bufio.NewReader(reader)
-	var myReader stringReader = bufioReader
-	lines := captureStringReader(myReader)
+	var strReader stringReader = bufioReader
+	lines := captureStringReader(strReader, opts...)
 	return lines
+}
+
+type opt struct {
+	stripStyling bool
+}
+type option func(o *opt)
+
+func StripStyling() option {
+	return func(o *opt) {
+		o.stripStyling = true
+	}
 }
 
 type terminal struct {
@@ -44,7 +56,7 @@ type terminal struct {
 	style  string
 }
 
-func captureStringReader(reader stringReader) []string {
+func captureStringReader(reader stringReader, opts ...option) []string {
 	terminal := &terminal{screen: make([]string, 0), x: 0, y: 0, style: ""}
 	ansiControlCodes := regexp.MustCompile("\x1b\\[([0-9]*)([ABCDEFGJK]|;?[0-9]*H)")
 	for {
@@ -62,7 +74,15 @@ func captureStringReader(reader stringReader) []string {
 			break
 		}
 	}
-	return terminal.screen
+	o := opt{}
+	for _, op := range opts {
+		op(&o)
+	}
+	if o.stripStyling {
+		return stripStyles(terminal.screen)
+	} else {
+		return cleanStyles(terminal.screen)
+	}
 }
 
 func (terminal *terminal) handleLine(ansiControlCodes *regexp.Regexp, line string) {
@@ -168,9 +188,7 @@ func (terminal *terminal) handleCode(countStart, countEnd, codeStart, codeEnd, c
 }
 
 func (terminal *terminal) printTerm(text string) {
-	screen := terminal.screen
-	screen = print(screen, terminal.style+text, terminal.x, terminal.y)
-	terminal.screen = screen
+	terminal.screen = print(terminal.screen, terminal.style+text, terminal.x, terminal.y)
 	terminal.x += length(text)
 	styles := ansiStyleCodes.FindAllString(terminal.style+text, -1)
 	terminal.style = updateStyle(styles)
@@ -239,6 +257,46 @@ func pos(value string, i int) int {
 			offset += pos[1] - pos[0]
 		}
 	}
+}
+
+// cleanStyles removes duplicate style codes
+func cleanStyles(screen []string) []string {
+	lines := []string{}
+	for _, row := range screen {
+		style := ""
+		line := ""
+		i := 0
+		for {
+			row = row[i:]
+			loc := ansiStyleCodes.FindStringIndex(row)
+			if loc == nil {
+				break
+			}
+			begin, end := loc[0], loc[1]
+			st := row[begin:end]
+			// skip first style (so rows are more independent):
+			if i > 0 && (ansiResetCode.MatchString(st) && ansiResetCode.MatchString(style) || st == style) {
+				line += row[:begin]
+			} else {
+				line += row[:end]
+			}
+			style = st
+			i = end
+		}
+		line += row
+		lines = append(lines, line)
+	}
+	return lines
+}
+
+// stripStyles removes style codes (colors and similar)
+func stripStyles(screen []string) []string {
+	lines := []string{}
+	for _, row := range screen {
+		line := allAnsiCodes.ReplaceAllString(row, "")
+		lines = append(lines, line)
+	}
+	return lines
 }
 
 func length(value string) int {

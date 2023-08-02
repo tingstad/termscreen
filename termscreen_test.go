@@ -24,6 +24,15 @@ func ExampleCapture() {
 	// hello, world!
 }
 
+func ExampleCapture_strip() {
+	fmt.Println(strings.Join(
+		Capture(strings.NewReader("\x1b[1mHello!\x1b[m"), StripStyling()),
+		"\n"))
+
+	// Output:
+	// Hello!
+}
+
 func TestOneLine(t *testing.T) {
 	lines := captureStringReader(strReader("hello\n"))
 
@@ -328,6 +337,22 @@ func TestPrintStyleBug(t *testing.T) {
 	got := lines[0]
 	want := "\x1b[;m\x1b[1;32m>\x1b[m * \x1b[33m0793964\x1b[m 2021-04-03 \x1b[33m (\x1b[m\x1b[1;36mHEAD -> \x1b[;m\x1b[1;32musability2"
 	assertEqualsStr(t, want, got)
+}
+
+func TestCleanStyles(t *testing.T) {
+	lines := captureStringReader(strReader(
+		"\x1b[31mRED\x1b[0m \x1b[m HI \x1b[33mFOO\x1b[33mBAR"))
+
+	want := "\x1b[31mRED\x1b[0m  HI \x1b[33mFOOBAR"
+	assertEqualsStr(t, want, lines[0])
+}
+
+func TestStripStyles(t *testing.T) {
+	lines := captureStringReader(strReader(
+		"\x1b[31mRED\x1b[0m \x1b[m HI\n \x1b[33mFOO\x1b[33mBAR"), StripStyling())
+
+	want := "RED  HI, FOOBAR"
+	assertEqualsStr(t, want, strings.Join(lines, ","))
 }
 
 func TestUpdateStyle(t *testing.T) {
