@@ -22,8 +22,7 @@ build:
 clean: cleantag
 	rm -f $(NAME)
 docker: goversion
-	docker build -t $(NAME) --build-arg GO_VERSION=$$(\
-		make goversion) .
+	docker build -t $(NAME) --build-arg GO_VERSION=$$(make goversion) .
 release: test cleantag tag
 	git tag "$$(cat tag)" # https://go.dev/doc/modules/publishing
 	git push origin "$$(cat tag)"
